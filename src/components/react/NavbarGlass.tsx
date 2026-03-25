@@ -29,7 +29,7 @@ function MenuPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
         onClick={onClose}
       />
       <div
-        className="fixed right-0 top-0 z-[201] h-screen w-full p-3 transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] md:w-[50vw]"
+        className="fixed right-0 top-0 z-[201] h-screen w-full p-3 transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)] md:w-[50vw]"
         style={{ transform: open ? "translateX(0)" : "translateX(100%)" }}
       >
         <div className="relative flex h-full w-full flex-col justify-between overflow-auto rounded-3xl bg-white p-9 shadow-2xl">
@@ -53,10 +53,10 @@ function MenuPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
                 }}
               >
                 <div className="relative overflow-clip">
-                  <span className="block text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] group-hover:-translate-y-full">
+                  <span className="block text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)] group-hover:-translate-y-full">
                     {link.label}
                   </span>
-                  <span className="absolute inset-0 block translate-y-full text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] group-hover:translate-y-0">
+                  <span className="absolute inset-0 block translate-y-full text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)] group-hover:translate-y-0">
                     {link.label}
                   </span>
                 </div>
@@ -114,7 +114,7 @@ export default function NavbarGlass() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-[100] flex justify-center pt-4 px-4 pointer-events-none">
         <div
-          className={`pointer-events-auto flex items-center rounded-full ${LIQUID_GLASS} transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)]`}
+          className={`pointer-events-auto flex items-center rounded-full ${LIQUID_GLASS} transition-all duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)]`}
           style={{
             padding: collapsed ? "5px 14px 5px 5px" : "5px 6px 5px 5px",
             maxWidth: collapsed ? "300px" : "700px",
@@ -134,7 +134,7 @@ export default function NavbarGlass() {
 
           {/* Desktop nav links */}
           <div
-            className="nav-links-wrap hidden lg:flex items-center gap-1 ml-auto overflow-hidden transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)]"
+            className="nav-links-wrap hidden lg:flex items-center gap-1 ml-auto overflow-hidden transition-all duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)]"
             style={{
               opacity: collapsed ? 0 : 1,
               maxWidth: collapsed ? "0px" : "600px",
@@ -149,10 +149,10 @@ export default function NavbarGlass() {
                 className="group relative inline-flex items-center px-3 py-1.5 text-black/60 hover:text-black transition-colors duration-200 no-underline"
               >
                 <div className="relative overflow-clip">
-                  <span className="block text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] group-hover:-translate-y-full">
+                  <span className="block text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)] group-hover:-translate-y-full">
                     {link.label}
                   </span>
-                  <span className="absolute inset-0 block translate-y-full text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] group-hover:translate-y-0">
+                  <span className="absolute inset-0 block translate-y-full text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)] group-hover:translate-y-0">
                     {link.label}
                   </span>
                 </div>
@@ -165,8 +165,8 @@ export default function NavbarGlass() {
               className="group ml-1 flex-shrink-0 rounded-full border border-black/[0.08] bg-white/80 px-4 py-1.5 text-[0.875rem] font-semibold text-black no-underline shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-black/15 hover:shadow-[0_3px_12px_rgba(0,0,0,0.08)]"
             >
               <div className="relative overflow-clip">
-                <span className="block transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] group-hover:-translate-y-full">Contact</span>
-                <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] group-hover:translate-y-0">Contact</span>
+                <span className="block transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)] group-hover:-translate-y-full">Contact</span>
+                <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)] group-hover:translate-y-0">Contact</span>
               </div>
             </a>
           </div>
