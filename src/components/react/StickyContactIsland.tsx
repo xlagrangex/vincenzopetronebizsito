@@ -44,11 +44,11 @@ export default function StickyContactIsland() {
       style={{
         opacity: visible ? 1 : 0,
         transform: `translateY(${visible ? "0" : "30px"})`,
-        transition: "opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1)",
+        transition: "opacity 0.9s cubic-bezier(0.22,0.68,0,1), transform 0.9s cubic-bezier(0.22,0.68,0,1)",
       }}
     >
       <div
-        className={`pointer-events-auto flex items-center rounded-[1.75rem] ${LIQUID_GLASS} transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer`}
+        className={`pointer-events-auto flex items-center rounded-[1.75rem] ${LIQUID_GLASS} transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] cursor-pointer`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={() => setHovered(!hovered)}
@@ -59,7 +59,7 @@ export default function StickyContactIsland() {
       >
         {/* Text: "Speak to me" — visible when NOT hovered */}
         <div
-          className="overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex-shrink-0"
+          className="overflow-hidden transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] flex-shrink-0"
           style={{
             maxWidth: hovered ? "0px" : "200px",
             opacity: hovered ? 0 : 1,
@@ -80,7 +80,7 @@ export default function StickyContactIsland() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="flex-shrink-0 flex items-center gap-2 rounded-full bg-[#25D366] text-white no-underline transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:brightness-110"
+          className="flex-shrink-0 flex items-center gap-2 rounded-full bg-[#25D366] text-white no-underline transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] hover:brightness-110"
           style={{
             padding: hovered ? "12px 20px 12px 16px" : "12px",
           }}
@@ -88,7 +88,7 @@ export default function StickyContactIsland() {
         >
           {WA_ICON}
           <span
-            className="text-[0.85rem] font-semibold whitespace-nowrap overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            className="text-[0.85rem] font-semibold whitespace-nowrap overflow-hidden transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)]"
             style={{
               maxWidth: hovered ? "100px" : "0px",
               opacity: hovered ? 1 : 0,
@@ -104,14 +104,14 @@ export default function StickyContactIsland() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="flex-shrink-0 flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 text-black no-underline transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-black/15 hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)]"
+          className="flex-shrink-0 flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 text-black no-underline transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)] hover:border-black/15 hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)]"
           style={{
             padding: hovered ? "12px 20px 12px 16px" : "12px",
           }}
         >
           {CAL_ICON}
           <span
-            className="text-[0.85rem] font-semibold whitespace-nowrap overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            className="text-[0.85rem] font-semibold whitespace-nowrap overflow-hidden transition-all duration-[900ms] ease-[cubic-bezier(0.22,0.68,0,1)]"
             style={{
               maxWidth: hovered ? "100px" : "0px",
               opacity: hovered ? 1 : 0,
