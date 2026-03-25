@@ -17,11 +17,14 @@ const menuLinks = [
   { label: "Contattaci", href: "/contatto" },
 ];
 
-const LIQUID_GLASS =
+const GLASS =
   "border border-white/40 bg-white/50 shadow-[0_4px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.04)] backdrop-blur-[28px] backdrop-saturate-[1.6]";
 
-/* Slow silky easing ONLY for expand/collapse shape transitions */
-const MORPH = "transition-all duration-[1200ms] ease-[cubic-bezier(0.4,0,0,1)]";
+/*
+ * ONE single transition string for all morphing properties.
+ * Everything moves together — no property finishes before another.
+ */
+const MORPH_T = "max-width 1.2s cubic-bezier(0.4,0,0,1), padding 1.2s cubic-bezier(0.4,0,0,1), opacity 1.2s cubic-bezier(0.4,0,0,1), gap 1.2s cubic-bezier(0.4,0,0,1)";
 
 function MenuPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   return createPortal(
@@ -32,8 +35,11 @@ function MenuPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
         onClick={onClose}
       />
       <div
-        className="fixed right-0 top-0 z-[201] h-screen w-full p-3 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:w-[50vw]"
-        style={{ transform: open ? "translateX(0)" : "translateX(100%)" }}
+        className="fixed right-0 top-0 z-[201] h-screen w-full p-3 md:w-[50vw]"
+        style={{
+          transform: open ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.7s cubic-bezier(0.16,1,0.3,1)",
+        }}
       >
         <div className="relative flex h-full w-full flex-col justify-between overflow-auto rounded-3xl bg-white p-9 shadow-2xl">
           <button
@@ -56,12 +62,8 @@ function MenuPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
                 }}
               >
                 <div className="relative overflow-clip">
-                  <span className="block text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
-                    {link.label}
-                  </span>
-                  <span className="absolute inset-0 block translate-y-full text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
-                    {link.label}
-                  </span>
+                  <span className="block text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">{link.label}</span>
+                  <span className="absolute inset-0 block translate-y-full text-[2.25rem] font-medium leading-[1.1] tracking-[-0.04em] text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">{link.label}</span>
                 </div>
               </a>
             ))}
@@ -100,13 +102,8 @@ export default function NavbarGlass() {
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.classList.add("menu-open");
-    } else {
-      document.body.style.overflow = "";
-      document.body.classList.remove("menu-open");
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.classList.toggle("menu-open", menuOpen);
     return () => {
       document.body.style.overflow = "";
       document.body.classList.remove("menu-open");
@@ -116,59 +113,39 @@ export default function NavbarGlass() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-[100] flex justify-center pt-4 px-4 pointer-events-none">
-        {/* The pill — MORPH easing only on the container shape */}
         <div
-          className={`pointer-events-auto flex items-center rounded-full ${LIQUID_GLASS} ${MORPH}`}
+          className={`pointer-events-auto flex items-center rounded-full ${GLASS}`}
           style={{
             padding: collapsed ? "5px 14px 5px 5px" : "5px 6px 5px 5px",
             maxWidth: collapsed ? "300px" : "700px",
+            transition: MORPH_T,
           }}
         >
-          {/* Avatar + Name */}
           <a href="/" className="flex items-center gap-3 flex-shrink-0 no-underline">
-            <img
-              src="/images/founder-portrait.webp"
-              alt="Vincenzo Petrone"
-              className="h-10 w-10 rounded-full object-cover flex-shrink-0 ring-1 ring-white/50"
-            />
-            <span className="text-[0.95rem] font-semibold tracking-[-0.02em] text-black whitespace-nowrap">
-              Vincenzo Petrone
-            </span>
+            <img src="/images/founder-portrait.webp" alt="Vincenzo Petrone" className="h-10 w-10 rounded-full object-cover flex-shrink-0 ring-1 ring-white/50" />
+            <span className="text-[0.95rem] font-semibold tracking-[-0.02em] text-black whitespace-nowrap">Vincenzo Petrone</span>
           </a>
 
-          {/* Desktop nav links — MORPH easing on show/hide, FAST hover on links */}
+          {/* Links wrapper — ALL properties on the SAME timing */}
           <div
-            className={`nav-links-wrap hidden lg:flex items-center gap-1 ml-auto overflow-hidden ${MORPH}`}
+            className="hidden lg:flex items-center gap-1 ml-auto overflow-hidden"
             style={{
-              opacity: collapsed ? 0 : 1,
               maxWidth: collapsed ? "0px" : "600px",
+              opacity: collapsed ? 0 : 1,
               padding: collapsed ? "0" : "0 4px",
               pointerEvents: collapsed ? "none" : "auto",
+              transition: MORPH_T,
             }}
           >
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="group relative inline-flex items-center px-3 py-1.5 text-black/60 hover:text-black transition-colors duration-200 no-underline"
-              >
+              <a key={link.label} href={link.href} className="group relative inline-flex items-center px-3 py-1.5 text-black/60 hover:text-black transition-colors duration-200 no-underline">
                 <div className="relative overflow-clip">
-                  {/* FAST hover slide — 500ms snappy */}
-                  <span className="block text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
-                    {link.label}
-                  </span>
-                  <span className="absolute inset-0 block translate-y-full text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
-                    {link.label}
-                  </span>
+                  <span className="block text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">{link.label}</span>
+                  <span className="absolute inset-0 block translate-y-full text-[0.875rem] font-medium whitespace-nowrap transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">{link.label}</span>
                 </div>
               </a>
             ))}
-
-            {/* Contact pill — FAST hover */}
-            <a
-              href="/contatto"
-              className="group ml-1 flex-shrink-0 rounded-full border border-black/[0.08] bg-white/80 px-4 py-1.5 text-[0.875rem] font-semibold text-black no-underline shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-black/15 hover:shadow-[0_3px_12px_rgba(0,0,0,0.08)]"
-            >
+            <a href="/contatto" className="group ml-1 flex-shrink-0 rounded-full border border-black/[0.08] bg-white/80 px-4 py-1.5 text-[0.875rem] font-semibold text-black no-underline shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-black/15 hover:shadow-[0_3px_12px_rgba(0,0,0,0.08)]">
               <div className="relative overflow-clip">
                 <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">Contact</span>
                 <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">Contact</span>
@@ -176,15 +153,14 @@ export default function NavbarGlass() {
             </a>
           </div>
 
-          {/* Three dots */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className={`ml-auto flex items-center gap-[5px] cursor-pointer p-2 rounded-full transition-all duration-300 hover:bg-black/5 ${collapsed ? "lg:flex" : "lg:hidden"}`}
             aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
           >
-            <span className="nav-dot nav-dot-1 h-[7px] w-[7px] rounded-full bg-black/50" />
-            <span className="nav-dot nav-dot-2 h-[6px] w-[6px] rounded-full bg-black/30" />
-            <span className="nav-dot nav-dot-3 h-[7px] w-[7px] rounded-full bg-black/50" />
+            <span className="nav-dot-1 h-[7px] w-[7px] rounded-full bg-black/50" />
+            <span className="nav-dot-2 h-[6px] w-[6px] rounded-full bg-black/30" />
+            <span className="nav-dot-3 h-[7px] w-[7px] rounded-full bg-black/50" />
           </button>
         </div>
       </nav>

@@ -1,5 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 
+/*
+ * ONE transition string — every property moves together.
+ * 800ms is fast enough to feel responsive but slow enough to be smooth.
+ * Same easing for everything = no property races ahead of another.
+ */
+const T = [
+  "max-width 0.8s cubic-bezier(0.4,0,0,1)",
+  "padding 0.8s cubic-bezier(0.4,0,0,1)",
+  "opacity 0.8s cubic-bezier(0.4,0,0,1)",
+  "gap 0.8s cubic-bezier(0.4,0,0,1)",
+].join(", ");
+
 export default function StickyContactIsland() {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -32,7 +44,6 @@ export default function StickyContactIsland() {
         transition: "transform 1.2s cubic-bezier(0.4,0,0,1), opacity 1.2s cubic-bezier(0.4,0,0,1)",
       }}
     >
-      {/* Pill container */}
       <div
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
@@ -48,10 +59,9 @@ export default function StickyContactIsland() {
           WebkitBackdropFilter: "blur(28px) saturate(1.6)",
           boxShadow: "0 4px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.04)",
           cursor: "pointer",
-          transition: "padding 1.2s cubic-bezier(0.4,0,0,1), gap 1.2s cubic-bezier(0.4,0,0,1)",
         }}
       >
-        {/* Text block — visible when closed */}
+        {/* "Speak to me" text — collapses on open, ALL on same timing */}
         <div
           style={{
             overflow: "hidden",
@@ -59,7 +69,7 @@ export default function StickyContactIsland() {
             maxWidth: open ? 0 : 170,
             opacity: open ? 0 : 1,
             paddingLeft: open ? 0 : 12,
-            transition: "max-width 1.2s cubic-bezier(0.4,0,0,1), opacity 0.6s ease, padding-left 1.2s cubic-bezier(0.4,0,0,1)",
+            transition: T,
           }}
         >
           <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "#000", lineHeight: 1.2 }}>
@@ -70,7 +80,7 @@ export default function StickyContactIsland() {
           </div>
         </div>
 
-        {/* WhatsApp pill */}
+        {/* WhatsApp — padding + label maxWidth + label opacity ALL same T */}
         <a
           href="https://wa.me/393319942136"
           target="_blank"
@@ -86,7 +96,7 @@ export default function StickyContactIsland() {
             color: "white",
             padding: open ? "11px 18px 11px 14px" : "11px",
             textDecoration: "none",
-            transition: "padding 0.5s cubic-bezier(0.16,1,0.3,1)",
+            transition: T,
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
@@ -100,14 +110,14 @@ export default function StickyContactIsland() {
               overflow: "hidden",
               maxWidth: open ? 80 : 0,
               opacity: open ? 1 : 0,
-              transition: "max-width 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease",
+              transition: T,
             }}
           >
             WhatsApp
           </span>
         </a>
 
-        {/* Book a call pill */}
+        {/* Book a call — same T for everything */}
         <a
           href="https://calendly.com/bizstudio-it/30min"
           target="_blank"
@@ -124,15 +134,7 @@ export default function StickyContactIsland() {
             color: "#000",
             padding: open ? "11px 18px 11px 14px" : "11px",
             textDecoration: "none",
-            transition: "padding 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.2s ease, box-shadow 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "rgba(0,0,0,0.15)";
-            e.currentTarget.style.boxShadow = "0 2px 10px rgba(0,0,0,0.06)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "rgba(0,0,0,0.08)";
-            e.currentTarget.style.boxShadow = "none";
+            transition: T + ", border-color 0.2s ease, box-shadow 0.2s ease",
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
@@ -150,7 +152,7 @@ export default function StickyContactIsland() {
               overflow: "hidden",
               maxWidth: open ? 90 : 0,
               opacity: open ? 1 : 0,
-              transition: "max-width 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease",
+              transition: T,
             }}
           >
             Book a call
