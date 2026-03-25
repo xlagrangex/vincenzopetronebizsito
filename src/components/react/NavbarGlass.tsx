@@ -17,6 +17,9 @@ const menuLinks = [
   { label: "Contattaci", href: "/contatto" },
 ];
 
+const LIQUID_GLASS =
+  "border border-white/40 bg-white/50 shadow-[0_4px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.04)] backdrop-blur-[28px] backdrop-saturate-[1.6]";
+
 function MenuPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   return createPortal(
     <>
@@ -77,16 +80,13 @@ export default function NavbarGlass() {
   const [mounted, setMounted] = useState(false);
   const ticking = useRef(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const threshold = 80;
     const onScroll = () => {
       if (!ticking.current) {
         window.requestAnimationFrame(() => {
-          setCollapsed(window.scrollY > threshold);
+          setCollapsed(window.scrollY > 80);
           ticking.current = false;
         });
         ticking.current = true;
@@ -114,10 +114,9 @@ export default function NavbarGlass() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-[100] flex justify-center pt-4 px-4 pointer-events-none">
         <div
-          className="pointer-events-auto flex items-center rounded-full border border-black/[0.06] bg-white/70 shadow-[0_2px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className={`pointer-events-auto flex items-center rounded-full ${LIQUID_GLASS} transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]`}
           style={{
             padding: collapsed ? "5px 14px 5px 5px" : "5px 6px 5px 5px",
-            width: collapsed ? "auto" : "auto",
             maxWidth: collapsed ? "300px" : "700px",
           }}
         >
@@ -126,14 +125,14 @@ export default function NavbarGlass() {
             <img
               src="/images/founder-portrait.webp"
               alt="Vincenzo Petrone"
-              className="h-10 w-10 rounded-full object-cover flex-shrink-0"
+              className="h-10 w-10 rounded-full object-cover flex-shrink-0 ring-1 ring-white/50"
             />
             <span className="text-[0.95rem] font-semibold tracking-[-0.02em] text-black whitespace-nowrap">
               Vincenzo Petrone
             </span>
           </a>
 
-          {/* Desktop nav links — hidden on mobile, hidden when collapsed */}
+          {/* Desktop nav links */}
           <div
             className="nav-links-wrap hidden lg:flex items-center gap-1 ml-auto overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
             style={{
@@ -163,25 +162,19 @@ export default function NavbarGlass() {
             {/* Contact pill */}
             <a
               href="/contatto"
-              className="group ml-1 flex-shrink-0 rounded-full border border-black/[0.08] bg-white/90 px-4 py-1.5 text-[0.875rem] font-semibold text-black no-underline shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-black/15 hover:shadow-[0_3px_12px_rgba(0,0,0,0.08)]"
+              className="group ml-1 flex-shrink-0 rounded-full border border-black/[0.08] bg-white/80 px-4 py-1.5 text-[0.875rem] font-semibold text-black no-underline shadow-[0_1px_4px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-black/15 hover:shadow-[0_3px_12px_rgba(0,0,0,0.08)]"
             >
               <div className="relative overflow-clip">
-                <span className="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
-                  Contact
-                </span>
-                <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
-                  Contact
-                </span>
+                <span className="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">Contact</span>
+                <span className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">Contact</span>
               </div>
             </a>
           </div>
 
-          {/* Three dots button — always on mobile, only when collapsed on desktop */}
+          {/* Three dots — always on mobile, only collapsed on desktop */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`ml-auto flex items-center gap-[5px] cursor-pointer p-2 rounded-full transition-all duration-500 hover:bg-black/5 ${
-              collapsed ? "lg:flex" : "lg:hidden"
-            }`}
+            className={`ml-auto flex items-center gap-[5px] cursor-pointer p-2 rounded-full transition-all duration-500 hover:bg-black/5 ${collapsed ? "lg:flex" : "lg:hidden"}`}
             aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
           >
             <span className="nav-dot nav-dot-1 h-[7px] w-[7px] rounded-full bg-black/50" />
