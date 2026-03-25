@@ -130,7 +130,7 @@ export default function ProjectBrowser({ projects }: Props) {
       {activeProject && (
         <div className="browser-content flex h-full w-full flex-col">
           {/* Browser chrome bar */}
-          <div className="flex h-12 flex-shrink-0 items-center gap-3 border-b border-white/10 bg-[#111] px-4">
+          <div className="flex h-12 flex-shrink-0 items-center gap-3 border-b border-black/10 bg-[#111] px-4">
             {/* Window controls */}
             <div className="flex items-center gap-2">
               <button
@@ -151,7 +151,7 @@ export default function ProjectBrowser({ projects }: Props) {
                     try { iframe.contentWindow.history.back(); } catch {}
                   }
                 }}
-                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-black/40 transition-colors hover:bg-black/10 hover:text-black"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m15 18-6-6 6-6"/></svg>
               </button>
@@ -162,7 +162,7 @@ export default function ProjectBrowser({ projects }: Props) {
                     try { iframe.contentWindow.history.forward(); } catch {}
                   }
                 }}
-                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-black/40 transition-colors hover:bg-black/10 hover:text-black"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m9 18 6-6-6-6"/></svg>
               </button>
@@ -171,29 +171,29 @@ export default function ProjectBrowser({ projects }: Props) {
                   const iframe = document.getElementById("project-iframe") as HTMLIFrameElement;
                   if (iframe) iframe.src = iframe.src;
                 }}
-                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-black/40 transition-colors hover:bg-black/10 hover:text-black"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
               </button>
             </div>
 
             {/* URL bar */}
-            <div className="mx-2 flex flex-1 items-center gap-2 rounded-lg bg-white/5 px-3 py-1.5">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="flex-shrink-0 text-white/30">
+            <div className="mx-2 flex flex-1 items-center gap-2 rounded-lg bg-black/5 px-3 py-1.5">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="flex-shrink-0 text-black/30">
                 <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
-              <span className="truncate text-xs text-white/50">{activeProject.url}</span>
+              <span className="truncate text-xs text-black/50">{activeProject.url}</span>
             </div>
 
             {/* Project name */}
-            <span className="hidden text-xs font-medium text-white/40 md:block">{activeProject.name}</span>
+            <span className="hidden text-xs font-medium text-black/40 md:block">{activeProject.name}</span>
 
             {/* Open in new tab */}
             <a
               href={activeProject.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-7 w-7 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+              className="flex h-7 w-7 items-center justify-center rounded-md text-black/40 transition-colors hover:bg-black/10 hover:text-black"
               aria-label="Apri in nuova scheda"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -204,8 +204,8 @@ export default function ProjectBrowser({ projects }: Props) {
           {!iframeLoaded && (
             <div className="absolute inset-0 top-12 flex items-center justify-center bg-[#1a1a1a]">
               <div className="flex flex-col items-center gap-3">
-                <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-white/60" />
-                <span className="text-sm text-white/40">Caricamento {activeProject.name}...</span>
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-black/20 border-t-white/60" />
+                <span className="text-sm text-black/40">Caricamento {activeProject.name}...</span>
               </div>
             </div>
           )}

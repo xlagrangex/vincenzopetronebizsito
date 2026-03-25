@@ -130,7 +130,7 @@ export default function ExpandButton({ text, variant = "gradient", children }: P
           >
             <button
               onClick={handleClose}
-              className="fixed right-8 top-8 z-[301] flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-colors duration-200 hover:bg-white/30"
+              className="fixed right-8 top-8 z-[301] flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-colors duration-200 hover:bg-black/30"
               aria-label="Chiudi"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -140,7 +140,7 @@ export default function ExpandButton({ text, variant = "gradient", children }: P
               {children || (
                 <div className="mx-auto max-w-3xl text-center">
                   <h2 className="mb-6 text-5xl font-bold tracking-[-0.03em] md:text-7xl">
-                    Benvenuto in BizStudio
+                    Benvenuto in Vincenzo Petrone Biz
                   </h2>
                   <p className="mb-10 text-xl text-white/70 md:text-2xl">
                     Scopri come trasformiamo le idee in esperienze digitali che generano risultati.

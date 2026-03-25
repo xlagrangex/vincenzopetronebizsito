@@ -8,7 +8,7 @@ const rows = [
     agency: 'Siti vetrina "pronti all\'uso" ma poco performanti',
     bigCompany: "Servizi generalisti (social, grafica, web, pubblicità…)",
     bizstudio: "Solo siti web strategici",
-    details: "BizStudio si occupa ESCLUSIVAMENTE di siti web strategici: belli, veloci e orientati al business. Non facciamo social, grafica o pubblicità - solo siti che convertono visitatori in clienti.",
+    details: "Vincenzo Petrone Biz si occupa ESCLUSIVAMENTE di siti web strategici: belli, veloci e orientati al business. Non facciamo social, grafica o pubblicità - solo siti che convertono visitatori in clienti.",
   },
   {
     id: "rapporto",
@@ -91,7 +91,7 @@ export default function ComparisonTable() {
     <>
       {/* Desktop */}
       <div className="hidden lg:block">
-        <div className="relative overflow-hidden rounded-2xl border border-white/10">
+        <div className="relative overflow-hidden rounded-2xl border border-black/10">
           {/* Gradient column background — positioned over the last 20% of the table */}
           <div
             className="pointer-events-none absolute right-0 top-0 z-0 h-full w-[20%]"
@@ -101,24 +101,24 @@ export default function ComparisonTable() {
           <table className="relative z-[1] w-full border-collapse text-sm">
             <thead>
               <tr>
-                <th className="border-b border-white/10 bg-transparent px-6 py-5 text-left font-medium text-white/50 w-[20%]"></th>
-                <th className="border-b border-white/10 bg-transparent px-6 py-5 text-left font-bold uppercase tracking-[0.1em] text-white/60 text-xs w-[20%]">Freelancer</th>
-                <th className="border-b border-white/10 bg-transparent px-6 py-5 text-left font-bold uppercase tracking-[0.1em] text-white/60 text-xs w-[20%]">Web Agency</th>
-                <th className="border-b border-white/10 bg-transparent px-6 py-5 text-left font-bold uppercase tracking-[0.1em] text-white/60 text-xs w-[20%]">Grande Azienda</th>
+                <th className="border-b border-black/10 bg-transparent px-6 py-5 text-left font-medium text-black/50 w-[20%]"></th>
+                <th className="border-b border-black/10 bg-transparent px-6 py-5 text-left font-bold uppercase tracking-[0.1em] text-black/60 text-xs w-[20%]">Freelancer</th>
+                <th className="border-b border-black/10 bg-transparent px-6 py-5 text-left font-bold uppercase tracking-[0.1em] text-black/60 text-xs w-[20%]">Web Agency</th>
+                <th className="border-b border-black/10 bg-transparent px-6 py-5 text-left font-bold uppercase tracking-[0.1em] text-black/60 text-xs w-[20%]">Grande Azienda</th>
                 <th className="border-b border-white/20 px-6 py-5 text-left w-[20%]">
-                  <img src="/images/bizstudio-logo-white.png" alt="BizStudio" className="h-6" />
+                  <img src="/images/bizstudio-logo-white.png" alt="Vincenzo Petrone Biz" className="h-6" />
                 </th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row) => (
                 <tr key={row.id}>
-                  <td className="border-b border-white/5 bg-transparent px-6 py-5 font-bold text-white text-[0.8125rem]">
+                  <td className="border-b border-black/5 bg-transparent px-6 py-5 font-bold text-black text-[0.8125rem]">
                     {row.label}
                   </td>
-                  <td className="border-b border-white/5 bg-transparent px-6 py-5 text-white/40 text-[0.8125rem]">{row.freelancer}</td>
-                  <td className="border-b border-white/5 bg-transparent px-6 py-5 text-white/40 text-[0.8125rem]">{row.agency}</td>
-                  <td className="border-b border-white/5 bg-transparent px-6 py-5 text-white/40 text-[0.8125rem]">{row.bigCompany}</td>
+                  <td className="border-b border-black/5 bg-transparent px-6 py-5 text-black/40 text-[0.8125rem]">{row.freelancer}</td>
+                  <td className="border-b border-black/5 bg-transparent px-6 py-5 text-black/40 text-[0.8125rem]">{row.agency}</td>
+                  <td className="border-b border-black/5 bg-transparent px-6 py-5 text-black/40 text-[0.8125rem]">{row.bigCompany}</td>
                   <td className="border-b border-white/10 px-6 py-5 text-[0.8125rem]">
                     <button
                       onClick={() => setOpenId(openId === row.id ? null : row.id)}
@@ -158,21 +158,21 @@ export default function ComparisonTable() {
       {/* Mobile cards */}
       <div className="flex flex-col gap-4 lg:hidden">
         {rows.map((row) => (
-          <div key={row.id} className="overflow-hidden rounded-2xl border border-white/10">
+          <div key={row.id} className="overflow-hidden rounded-2xl border border-black/10">
             <div className="bg-transparent p-5">
-              <div className="mb-3 text-sm font-bold text-white">{row.label}</div>
+              <div className="mb-3 text-sm font-bold text-black">{row.label}</div>
               <div className="flex flex-col gap-2 text-xs">
                 <div className="flex justify-between">
-                  <span className="font-semibold uppercase tracking-wider text-white/30">Freelancer</span>
-                  <span className="text-right text-white/40">{row.freelancer}</span>
+                  <span className="font-semibold uppercase tracking-wider text-black/30">Freelancer</span>
+                  <span className="text-right text-black/40">{row.freelancer}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold uppercase tracking-wider text-white/30">Agency</span>
-                  <span className="text-right text-white/40">{row.agency}</span>
+                  <span className="font-semibold uppercase tracking-wider text-black/30">Agency</span>
+                  <span className="text-right text-black/40">{row.agency}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold uppercase tracking-wider text-white/30">Grande Azienda</span>
-                  <span className="text-right text-white/40">{row.bigCompany}</span>
+                  <span className="font-semibold uppercase tracking-wider text-black/30">Grande Azienda</span>
+                  <span className="text-right text-black/40">{row.bigCompany}</span>
                 </div>
               </div>
             </div>

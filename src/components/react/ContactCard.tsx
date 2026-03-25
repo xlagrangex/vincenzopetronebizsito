@@ -11,11 +11,11 @@ export default function ContactCard() {
     >
       <img
         src="/images/Clip-path-group.png"
-        alt="Fondatore di BizStudio"
+        alt="Fondatore di Vincenzo Petrone Biz"
         className="aspect-square w-[4.4rem] rounded-2xl object-cover"
         loading="lazy"
       />
-      <div className="relative flex flex-col items-start justify-between rounded-2xl bg-white/20 p-4 pr-6 backdrop-blur-[20px]">
+      <div className="relative flex flex-col items-start justify-between rounded-2xl bg-black/5 p-4 pr-6 backdrop-blur-[20px]">
         {/* Main text */}
         <div
           className="flex flex-col overflow-clip transition-all duration-300"
@@ -24,10 +24,10 @@ export default function ContactCard() {
             opacity: 1,
           }}
         >
-          <span className="font-semibold text-white whitespace-nowrap">
+          <span className="font-semibold text-black whitespace-nowrap">
             Prenota una consulenza gratuita
           </span>
-          <span className="text-sm font-medium text-white/50 whitespace-nowrap">
+          <span className="text-sm font-medium text-black/50 whitespace-nowrap">
             Con il titolare di Bizstudio®
           </span>
         </div>
@@ -42,30 +42,30 @@ export default function ContactCard() {
           }}
         >
           <div className="flex w-full flex-col gap-0.5 pt-2">
-            <span className="text-sm font-medium text-white/50">Email</span>
+            <span className="text-sm font-medium text-black/50">Email</span>
             <a
               href="mailto:bizstudio.it@gmail.com"
-              className="font-semibold text-white decoration-dotted decoration-white/50 underline-offset-2 hover:underline"
+              className="font-semibold text-black decoration-dotted decoration-black/50 underline-offset-2 hover:underline"
             >
               bizstudio.it@gmail.com
             </a>
           </div>
-          <div className="flex w-full flex-col gap-0.5 border-t border-dotted border-white/15 pt-2">
-            <span className="text-sm font-medium text-white/50">Telefono</span>
+          <div className="flex w-full flex-col gap-0.5 border-t border-dotted border-black/15 pt-2">
+            <span className="text-sm font-medium text-black/50">Telefono</span>
             <a
               href="tel:+393319942136"
-              className="font-semibold text-white decoration-dotted decoration-white/50 underline-offset-2 hover:underline"
+              className="font-semibold text-black decoration-dotted decoration-black/50 underline-offset-2 hover:underline"
             >
               +39 331 994 2136
             </a>
           </div>
-          <div className="flex w-full flex-col gap-0.5 border-t border-dotted border-white/15 pt-2">
-            <span className="text-sm font-medium text-white/50">
+          <div className="flex w-full flex-col gap-0.5 border-t border-dotted border-black/15 pt-2">
+            <span className="text-sm font-medium text-black/50">
               Prenota ora
             </span>
             <a
               href="https://calendly.com/bizstudio-it/30min"
-              className="font-semibold text-white decoration-dotted decoration-white/50 underline-offset-2 hover:underline"
+              className="font-semibold text-black decoration-dotted decoration-black/50 underline-offset-2 hover:underline"
             >
               Chiamata conoscitiva
             </a>

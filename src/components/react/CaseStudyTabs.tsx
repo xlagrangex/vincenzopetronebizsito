@@ -108,12 +108,12 @@ export default function CaseStudyTabs() {
       <div className="relative">
         {/* Fade sinistro — appare solo se c'e' contenuto a sinistra */}
         <div
-          className="pointer-events-none absolute left-0 top-0 z-10 h-[calc(100%-3.5rem)] w-16 md:w-24 bg-gradient-to-r from-black to-transparent transition-opacity duration-300"
+          className="pointer-events-none absolute left-0 top-0 z-10 h-[calc(100%-3.5rem)] w-16 md:w-24 bg-gradient-to-r from-white to-transparent transition-opacity duration-300"
           style={{ opacity: canScrollLeft ? 1 : 0 }}
         />
         {/* Fade destro — appare solo se c'e' contenuto a destra */}
         <div
-          className="pointer-events-none absolute right-0 top-0 z-10 h-[calc(100%-3.5rem)] w-16 md:w-24 bg-gradient-to-l from-black to-transparent transition-opacity duration-300"
+          className="pointer-events-none absolute right-0 top-0 z-10 h-[calc(100%-3.5rem)] w-16 md:w-24 bg-gradient-to-l from-white to-transparent transition-opacity duration-300"
           style={{ opacity: canScrollRight ? 1 : 0 }}
         />
         <div
@@ -128,7 +128,7 @@ export default function CaseStudyTabs() {
           {filtered.map((study, i) => (
             <div
               key={`${activeTab}-${i}`}
-              className="group flex-shrink-0 w-[calc(28.5%-15px)] min-w-[240px] rounded-2xl bg-white/5 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              className="group flex-shrink-0 w-[calc(28.5%-15px)] min-w-[240px] rounded-2xl bg-black/5 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
               style={{
                 animation: `fadeSlideIn 0.5s ease ${i * 0.08}s both`,
               }}
@@ -142,23 +142,23 @@ export default function CaseStudyTabs() {
                   loading="lazy"
                 />
                 {/* Category badge */}
-                <span className="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white/70 backdrop-blur-sm">
+                <span className="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-black/70 backdrop-blur-sm">
                   {study.category}
                 </span>
               </div>
 
               {/* Content */}
               <div className="p-5">
-                <h4 className="!text-lg !leading-[130%] font-semibold text-white mb-2">
+                <h4 className="!text-lg !leading-[130%] font-semibold text-black mb-2">
                   {study.title}
                 </h4>
-                <p className="text-sm leading-[160%] text-white/40 mb-4">
+                <p className="text-sm leading-[160%] text-black/40 mb-4">
                   {study.description}
                 </p>
                 {/* Approfondisci button */}
                 <a
                   href="/portfolio"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-xs font-medium text-white/50 transition-all duration-300 hover:border-white/30 hover:text-white"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-xs font-medium text-black/50 transition-all duration-300 hover:border-black/30 hover:text-black"
                 >
                   Approfondisci
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -174,7 +174,7 @@ export default function CaseStudyTabs() {
         <div className="mt-4 flex gap-3">
           <button
             onClick={scrollLeft}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 transition-colors duration-200 hover:bg-white/10"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 transition-colors duration-200 hover:bg-black/10"
             aria-label="Precedente"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -183,7 +183,7 @@ export default function CaseStudyTabs() {
           </button>
           <button
             onClick={scrollRight}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 transition-colors duration-200 hover:bg-white/10"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 transition-colors duration-200 hover:bg-black/10"
             aria-label="Successivo"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

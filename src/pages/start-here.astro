@@ -3,7 +3,7 @@ import LayoutMinimal from "../layouts/LayoutMinimal.astro";
 import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx";
 ---
 
-<LayoutMinimal title="Start here - BizStudio" description="Tell us about your project for a free custom proposal">
+<LayoutMinimal title="Start here - Vincenzo Petrone Biz" description="Tell us about your project for a free custom proposal">
 
   <div class="glow-circle"></div>
   <div class="glow-circle glow-circle--2"></div>
@@ -12,11 +12,11 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
   <!-- Top bar: solo logo -->
   <header class="top-bar fixed top-0 left-0 right-0 z-50 flex items-center px-5 md:px-8" style="height:60px;">
     <a href="/" class="flex-shrink-0" aria-label="Back to homepage">
-      <img src="/images/Group-15.png" alt="BizStudio" class="w-20 opacity-70 hover:opacity-100 transition-opacity" />
+      <img src="/images/Group-15.png" alt="Vincenzo Petrone Biz" class="w-20 opacity-70 hover:opacity-100 transition-opacity" />
     </a>
   </header>
   <div class="fixed top-0 right-5 md:right-8 z-50 flex items-center" style="height:60px;">
-    <a href="/parti-da-qui" class="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white hover:border-white/25 hover:bg-white/[0.08] transition-all duration-300">IT</a>
+    <a href="/parti-da-qui" class="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-black/60 hover:text-black hover:border-white/25 hover:bg-white/[0.08] transition-all duration-300">IT</a>
   </div>
 
   <main class="form-page relative flex flex-col justify-center items-center min-h-screen pt-20 pb-10 md:pt-24 md:pb-12 px-5 md:px-8">
@@ -25,10 +25,10 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
       <!-- Progress bar (hidden on step 1, shown from step 2) -->
       <div class="form-progress mb-5" style="display:none;">
         <div class="flex items-center justify-between mb-2">
-          <span class="step-label text-[0.7rem] font-semibold text-white/50">Step <span class="step-num-display">1</span> of 5</span>
-          <span class="step-motivation text-[0.7rem] font-medium text-white/40"></span>
+          <span class="step-label text-[0.7rem] font-semibold text-black/50">Step <span class="step-num-display">1</span> of 5</span>
+          <span class="step-motivation text-[0.7rem] font-medium text-black/40"></span>
         </div>
-        <div class="relative h-[5px] w-full overflow-hidden rounded-full bg-white/10">
+        <div class="relative h-[5px] w-full overflow-hidden rounded-full bg-black/10">
           <div class="progress-fill absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#1B4088,#A51B80_60%,#DA5713)]" style="width:20%; transition: width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
         </div>
       </div>
@@ -39,12 +39,12 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
         <!-- STEP 1: Nome (clean, minimal, focused) -->
         <div class="step-content" data-step="1">
           <div class="text-center mb-8">
-            <p class="text-base text-white/40 mb-4">2 minutes, no commitment, 100% tailored to you.</p>
-            <h1 class="!text-[clamp(1.8rem,5vw,2.8rem)] !leading-[125%] font-semibold tracking-[-0.03em] text-white">
+            <p class="text-base text-black/40 mb-4">2 minutes, no commitment, 100% tailored to you.</p>
+            <h1 class="!text-[clamp(1.8rem,5vw,2.8rem)] !leading-[125%] font-semibold tracking-[-0.03em] text-black">
               Every great project starts<br class="hidden sm:block" /> with a conversation.
             </h1>
           </div>
-          <h2 class="!text-[clamp(1.4rem,3.5vw,1.8rem)] !leading-[130%] font-medium tracking-[-0.02em] text-white/70 text-center mb-6">
+          <h2 class="!text-[clamp(1.4rem,3.5vw,1.8rem)] !leading-[130%] font-medium tracking-[-0.02em] text-black/70 text-center mb-6">
             Let's start with introductions. What's your name?
           </h2>
           <div class="max-w-sm mx-auto">
@@ -56,27 +56,27 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
         <div class="step-content greeting-screen" data-step="greeting" style="display:none;">
           <div class="greeting-stage text-center flex items-center justify-center" style="min-height:200px;">
             <div class="greeting-slide greeting-slide-1 opacity-0">
-              <h2 class="!text-[clamp(1.8rem,5vw,2.8rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
+              <h2 class="!text-[clamp(1.8rem,5vw,2.8rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-black">
                 Hey <span class="greeting-name"></span>, nice to meet you! <span class="inline-block" style="font-size:1.2em;">👋</span>
               </h2>
             </div>
             <div class="greeting-slide greeting-slide-2 opacity-0">
               <div class="max-w-2xl mx-auto text-center">
-                <h2 class="greeting-2a !text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
-                  We are <span class="gradient-text-animated font-bold">BizStudio</span>...
+                <h2 class="greeting-2a !text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-black">
+                  We are <span class="gradient-text-animated font-bold">Vincenzo Petrone Biz</span>...
                 </h2>
-                <p class="greeting-2b !text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[125%] font-semibold tracking-[-0.04em] text-white mt-5 opacity-0">
+                <p class="greeting-2b !text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[125%] font-semibold tracking-[-0.04em] text-black mt-5 opacity-0">
                   ...and if you have a <span class="word-warm-gradient">dream</span> for your business, we want to help you make it happen.
                 </p>
               </div>
             </div>
             <div class="greeting-slide greeting-slide-3 opacity-0">
-              <h2 class="!text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
+              <h2 class="!text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-black">
                 Ready?
               </h2>
             </div>
             <div class="greeting-slide greeting-slide-4 opacity-0">
-              <h2 class="greeting-finale !text-[clamp(1.8rem,5vw,2.8rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
+              <h2 class="greeting-finale !text-[clamp(1.8rem,5vw,2.8rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-black">
                 Let's go, <span class="greeting-name"></span>.
               </h2>
             </div>
@@ -85,7 +85,7 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
 
         <!-- STEP 2: Cosa stai immaginando + Hai già un sito -->
         <div class="step-content" data-step="2" style="display:none;">
-          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-6">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-black text-center mb-6">
             <span class="user-name"></span>, tell us:<br />what are you envisioning?
           </h2>
           <div class="options-grid grid grid-cols-1 sm:grid-cols-2 gap-3" role="radiogroup" aria-label="Project type">
@@ -113,7 +113,7 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
 
           <!-- Follow-up: Hai già un sito? (appare dopo selezione) -->
           <div class="followup mt-6" style="display:none;">
-            <p class="text-sm text-white/60 text-center mb-3"><span class="user-name"></span>, are you starting from scratch or do you already have something online?</p>
+            <p class="text-sm text-black/60 text-center mb-3"><span class="user-name"></span>, are you starting from scratch or do you already have something online?</p>
             <div class="flex flex-wrap justify-center gap-2">
               <button class="chip" data-sito="zero">Starting from scratch</button>
               <button class="chip" data-sito="rifare">I have a site but it's time for a change</button>
@@ -121,10 +121,10 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
             </div>
             <!-- Campo link condizionale -->
             <div class="link-field mt-4" style="display:none;">
-              <label class="text-xs text-white/50 mb-1.5 block">Enter your current website link</label>
+              <label class="text-xs text-black/50 mb-1.5 block">Enter your current website link</label>
               <div class="flex items-center gap-0 rounded-[0.875rem] border border-white/15 bg-white/[0.05] overflow-hidden">
-                <span class="pl-3 pr-1 text-sm text-white/30 select-none flex-shrink-0">https://</span>
-                <input type="text" id="sito-attuale" class="flex-1 py-3 pr-3 bg-transparent text-white text-sm outline-none placeholder:text-white/25" placeholder="www.yoursite.com" />
+                <span class="pl-3 pr-1 text-sm text-black/30 select-none flex-shrink-0">https://</span>
+                <input type="text" id="sito-attuale" class="flex-1 py-3 pr-3 bg-transparent text-black text-sm outline-none placeholder:text-black/25" placeholder="www.yoursite.com" />
               </div>
             </div>
           </div>
@@ -132,14 +132,14 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
 
         <!-- STEP 3: La tua azienda -->
         <div class="step-content" data-step="3" style="display:none;">
-          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-6">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-black text-center mb-6">
             <span class="user-name"></span>, tell us about your business.
           </h2>
           <div class="max-w-md mx-auto flex flex-col gap-4 mb-6">
             <input type="text" id="azienda-input" class="form-input" placeholder="Company or project name" />
             <input type="text" id="settore-input" class="form-input" placeholder="What industry are you in? (e.g. food, fashion, tech...)" />
           </div>
-          <p class="text-sm text-white/50 text-center mb-3">Where is your business at?</p>
+          <p class="text-sm text-black/50 text-center mb-3">Where is your business at?</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto" role="radiogroup" aria-label="Business maturity">
             <button class="option-card option-card-compact" data-value="brand-nuovo" role="radio" aria-checked="false" tabindex="0">
               <span class="option-title">A brand yet to be born</span>
@@ -162,44 +162,44 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
 
         <!-- STEP 4: Budget -->
         <div class="step-content" data-step="4" style="display:none;">
-          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-3">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-black text-center mb-3">
             <span class="user-name"></span>, now the question everyone hates.
           </h2>
-          <p class="text-sm text-white/40 text-center mb-2 max-w-md mx-auto leading-relaxed">
+          <p class="text-sm text-black/40 text-center mb-2 max-w-md mx-auto leading-relaxed">
             But we ask it anyway because we like being straightforward.
           </p>
-          <p class="text-xs text-white/30 text-center mb-5 max-w-md mx-auto leading-relaxed">
+          <p class="text-xs text-black/30 text-center mb-5 max-w-md mx-auto leading-relaxed">
             A budget idea helps us avoid wasting your time with off-target proposals. It's not a contract — it's a starting point.
           </p>
 
           <!-- Toggle espandibile (senza box) -->
           <div class="max-w-md mx-auto mb-6 text-center">
             <button class="budget-toggle inline-flex items-center gap-1.5 cursor-pointer transition-colors duration-300 bg-transparent border-none outline-none" type="button">
-              <span class="text-xs text-white/40 underline underline-offset-2 decoration-white/20 hover:decoration-white/40">Why do we ask about budget?</span>
-              <svg class="budget-toggle-arrow w-3.5 h-3.5 text-white/30 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              <span class="text-xs text-black/40 underline underline-offset-2 decoration-white/20 hover:decoration-white/40">Why do we ask about budget?</span>
+              <svg class="budget-toggle-arrow w-3.5 h-3.5 text-black/30 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="budget-toggle-content overflow-hidden" style="max-height:0; opacity:0; transition: max-height 0.5s ease, opacity 0.4s ease;">
-              <div class="pt-4 pb-1 text-xs text-white/35 leading-[175%] space-y-3 max-w-sm mx-auto text-left">
+              <div class="pt-4 pb-1 text-xs text-black/35 leading-[175%] space-y-3 max-w-sm mx-auto text-left">
                 <p>We know, talking about money is never easy. But we believe transparency is the foundation of every good working relationship.</p>
-                <p>The main reason is simple: <strong class="text-white/50">to avoid wasting time — both yours and ours.</strong> Without a budget indication, we risk having two or three discovery calls, preparing a detailed proposal, and then finding out we're not aligned on numbers. It's frustrating for everyone.</p>
+                <p>The main reason is simple: <strong class="text-black/50">to avoid wasting time — both yours and ours.</strong> Without a budget indication, we risk having two or three discovery calls, preparing a detailed proposal, and then finding out we're not aligned on numbers. It's frustrating for everyone.</p>
                 <p>With a budget idea, even a very rough one, we can immediately understand which solution to propose and how to structure the offer so it makes sense for you.</p>
-                <p>And don't worry: <strong class="text-white/50">the budget is not set in stone.</strong> Many of our clients change their minds after seeing what we can offer — sometimes they invest more because they see the value, sometimes we find leaner solutions that cost less. It's a starting point, not a commitment.</p>
+                <p>And don't worry: <strong class="text-black/50">the budget is not set in stone.</strong> Many of our clients change their minds after seeing what we can offer — sometimes they invest more because they see the value, sometimes we find leaner solutions that cost less. It's a starting point, not a commitment.</p>
               </div>
             </div>
           </div>
 
           <div class="max-w-sm mx-auto">
             <input type="text" id="budget-input" class="form-input text-center text-lg" placeholder="" />
-            <p class="text-[0.65rem] text-white/25 text-center mt-2">This number stays between us.</p>
+            <p class="text-[0.65rem] text-black/25 text-center mt-2">This number stays between us.</p>
           </div>
         </div>
 
         <!-- STEP 5: Contatti finali -->
         <div class="step-content" data-step="5" style="display:none;">
-          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-3">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-black text-center mb-3">
             Almost there, <span class="user-name"></span> — and then we get to work for you.
           </h2>
-          <p class="text-sm text-white/40 text-center mb-6">Leave us your contacts so we can get back to you.</p>
+          <p class="text-sm text-black/40 text-center mb-6">Leave us your contacts so we can get back to you.</p>
           <div class="max-w-sm mx-auto flex flex-col gap-3">
             <input type="text" id="cognome-input" class="form-input" placeholder="Last name *" autocomplete="family-name" />
             <input type="email" id="email-input" class="form-input" placeholder="Email *" autocomplete="email" />
@@ -207,13 +207,13 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
             <label class="flex items-start gap-3 cursor-pointer group mt-1">
               <div class="relative mt-0.5 flex-shrink-0">
                 <input type="checkbox" id="privacy-check" class="peer sr-only" />
-                <div class="h-5 w-5 rounded-md border border-white/20 bg-white/[0.04] transition-all duration-200 peer-checked:border-[#A51B80]/50 peer-checked:bg-[#A51B80]/15 group-hover:border-white/30"></div>
-                <svg class="absolute top-0.5 left-0.5 h-4 w-4 text-white opacity-0 transition-opacity duration-200 peer-checked:opacity-100 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <div class="h-5 w-5 rounded-md border border-black/20 bg-white/[0.04] transition-all duration-200 peer-checked:border-[#A51B80]/50 peer-checked:bg-[#A51B80]/15 group-hover:border-black/30"></div>
+                <svg class="absolute top-0.5 left-0.5 h-4 w-4 text-black opacity-0 transition-opacity duration-200 peer-checked:opacity-100 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <span class="text-xs text-white/50 leading-relaxed">I consent to data processing under <a href="/legal/privacy-policy" class="underline underline-offset-2 text-white/60 hover:text-white/80 transition-colors">GDPR</a></span>
+              <span class="text-xs text-black/50 leading-relaxed">I consent to data processing under <a href="/legal/privacy-policy" class="underline underline-offset-2 text-black/60 hover:text-black/80 transition-colors">GDPR</a></span>
             </label>
           </div>
-          <p class="text-xs text-white/25 text-center mt-5">We'll get back to you within 24 hours — and if we don't, coffee's on us.</p>
+          <p class="text-xs text-black/25 text-center mt-5">We'll get back to you within 24 hours — and if we don't, coffee's on us.</p>
         </div>
 
         <!-- SUCCESS -->
@@ -225,14 +225,14 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
             </div>
-            <h2 class="success-title !text-[clamp(1.8rem,5vw,2.8rem)] !leading-[110%] font-semibold tracking-[-0.04em] text-white mb-3">
+            <h2 class="success-title !text-[clamp(1.8rem,5vw,2.8rem)] !leading-[110%] font-semibold tracking-[-0.04em] text-black mb-3">
               <span class="user-name"></span>, your request is in good hands.
             </h2>
-            <p class="success-desc text-sm text-white/50 max-w-sm leading-relaxed mb-2">We'll write to you at <span class="user-email font-medium text-white/70"></span> within 24 hours.</p>
-            <p class="text-sm text-white/40 mb-8">In the meantime, see what we've done for those who — like you — trusted us.</p>
+            <p class="success-desc text-sm text-black/50 max-w-sm leading-relaxed mb-2">We'll write to you at <span class="user-email font-medium text-black/70"></span> within 24 hours.</p>
+            <p class="text-sm text-black/40 mb-8">In the meantime, see what we've done for those who — like you — trusted us.</p>
             <div class="flex flex-col sm:flex-row items-center gap-4">
-              <a href="https://calendly.com/bizstudio-it/30min" target="_blank" rel="noopener noreferrer" class="btn-gradient group relative inline-block rounded-full font-semibold text-white shadow-[0_8px_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_12px_30px_rgba(165,27,128,0.3)] bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] saturate-[1.15]"><div class="relative overflow-hidden rounded-full px-7 py-3 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]"><span class="relative z-[5] block text-sm font-semibold tracking-[-0.02em]">Book a call</span></div></a>
-              <button class="open-portfolio-bottom text-sm font-medium text-white/40 hover:text-white/70 transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white/40 cursor-pointer bg-transparent border-none">See our work</button>
+              <a href="https://calendly.com/bizstudio-it/30min" target="_blank" rel="noopener noreferrer" class="btn-gradient group relative inline-block rounded-full font-semibold text-black shadow-[0_8px_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_12px_30px_rgba(165,27,128,0.3)] bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] saturate-[1.15]"><div class="relative overflow-hidden rounded-full px-7 py-3 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]"><span class="relative z-[5] block text-sm font-semibold tracking-[-0.02em]">Book a call</span></div></a>
+              <button class="open-portfolio-bottom text-sm font-medium text-black/40 hover:text-black/70 transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white/40 cursor-pointer bg-transparent border-none">See our work</button>
             </div>
           </div>
         </div>
@@ -241,14 +241,14 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
 
       <!-- Navigation -->
       <div class="form-nav flex items-center justify-between mt-8 max-w-sm mx-auto">
-        <button class="btn-back group flex items-center gap-2 text-sm font-medium text-white/40 hover:text-white/70 transition-all duration-300 cursor-pointer invisible">
+        <button class="btn-back group flex items-center gap-2 text-sm font-medium text-black/40 hover:text-black/70 transition-all duration-300 cursor-pointer invisible">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:-translate-x-1"><path d="m15 18-6-6 6-6"/></svg>
           <span>Back</span>
         </button>
         <button class="btn-next btn-gradient group relative inline-block rounded-full text-center font-medium shadow-[0_16px_20px_rgba(0,0,0,0.4)] transition-all duration-300 ease-out hover:shadow-[0_20px_40px_rgba(165,27,128,0.3)] active:shadow-[0_4px_4px_rgba(0,0,0,0.3)] cursor-pointer bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] saturate-[1.15]">
           <div class="relative z-10 overflow-hidden rounded-full px-5 py-2.5 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] transition-shadow duration-300 group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]">
             <div class="pointer-events-none absolute inset-0 z-[1] rounded-full"><div class="expand-ball expand-ball-1"></div><div class="expand-ball expand-ball-2"></div></div>
-            <span class="relative z-[5] block overflow-hidden text-sm font-semibold tracking-[-0.03em] text-white">
+            <span class="relative z-[5] block overflow-hidden text-sm font-semibold tracking-[-0.03em] text-black">
               <span class="btn-text-wrap flex items-center gap-2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full"><span class="btn-text">Continue</span><svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><svg class="btn-spinner hidden animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg></span>
               <span class="btn-text-clone absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"><span>Continue</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
             </span>
@@ -262,16 +262,16 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
         <div class="flex items-center justify-center gap-3">
           <div class="flex items-baseline gap-1.5">
             <span class="text-xl font-bold tracking-[-0.03em] gradient-text-animated">+50</span>
-            <span class="text-xs text-white/45">companies chose us</span>
+            <span class="text-xs text-black/45">companies chose us</span>
           </div>
           <div class="flex items-center gap-1">
             <span class="text-amber-400 text-xs">★★★★★</span>
-            <span class="text-[0.65rem] text-white/45 font-semibold">4.9/5</span>
+            <span class="text-[0.65rem] text-black/45 font-semibold">4.9/5</span>
           </div>
         </div>
         <button class="open-portfolio-bottom group relative inline-block rounded-full text-center font-medium cursor-pointer border border-white/15 bg-white/[0.04] backdrop-blur-sm transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08] hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]">
           <div class="relative overflow-hidden rounded-full px-5 py-2">
-            <span class="relative block overflow-hidden text-xs font-semibold tracking-[-0.02em] text-white/60 group-hover:text-white transition-colors duration-300">
+            <span class="relative block overflow-hidden text-xs font-semibold tracking-[-0.02em] text-black/60 group-hover:text-black transition-colors duration-300">
               <span class="flex items-center gap-1.5 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
                 See our work
@@ -646,7 +646,7 @@ import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx
         greetTl.to(".greeting-slide-1", { opacity: 0, duration: 0.4, ease: "power2.in" }, t);
         t += 0.5;
 
-        // Slide 2: "Noi siamo BizStudio..." then "...e se hai un sogno..."
+        // Slide 2: "Noi siamo Vincenzo Petrone Biz..." then "...e se hai un sogno..."
         greetTl.fromTo(".greeting-slide-2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, t);
         t += 0.7 + 1.2;
         greetTl.fromTo(".greeting-2b", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t);

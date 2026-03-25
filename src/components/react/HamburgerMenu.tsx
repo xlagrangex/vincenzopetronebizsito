@@ -157,13 +157,13 @@ export default function HamburgerMenu() {
         aria-label={open ? "Chiudi menu" : "Apri menu"}
       >
         <span
-          className="block h-[2px] w-9 bg-white transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="block h-[2px] w-9 bg-black transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{
             transform: open ? "rotate(45deg) translate(3px, 3px)" : "none",
           }}
         />
         <span
-          className="block h-[2px] w-9 bg-white transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="block h-[2px] w-9 bg-black transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{
             transform: open ? "rotate(-45deg) translate(2px, -2px)" : "none",
           }}

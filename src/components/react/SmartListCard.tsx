@@ -23,7 +23,7 @@ const CYCLE_INTERVAL = 2400
 const priorityDot: Record<string, string> = {
   alta: 'bg-white/40',
   media: 'bg-white/20',
-  bassa: 'bg-white/10',
+  bassa: 'bg-black/10',
 }
 
 const SmartListItem = memo(function SmartListItem({
@@ -48,9 +48,9 @@ const SmartListItem = memo(function SmartListItem({
     >
       <div className="flex items-center gap-3">
         <div className={`h-1.5 w-1.5 rounded-full ${priorityDot[item.priority]}`} />
-        <span className="text-[13px] text-white/60">{item.label}</span>
+        <span className="text-[13px] text-black/60">{item.label}</span>
       </div>
-      <span className="font-mono text-[11px] text-white/30">{item.metric}</span>
+      <span className="font-mono text-[11px] text-black/30">{item.metric}</span>
     </div>
   )
 })
@@ -132,10 +132,10 @@ export default function SmartListCard() {
       <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6">
         {/* Header */}
         <div className="mb-5 flex items-center justify-between">
-          <span className="text-[11px] font-medium uppercase tracking-wider text-white/25">
+          <span className="text-[11px] font-medium uppercase tracking-wider text-black/25">
             Priorita
           </span>
-          <span className="font-mono text-[10px] text-white/15">live</span>
+          <span className="font-mono text-[10px] text-black/15">live</span>
         </div>
 
         {/* List */}
@@ -152,7 +152,7 @@ export default function SmartListCard() {
 
         {/* Footer */}
         <div className="mt-5 border-t border-white/[0.04] pt-3">
-          <span className="text-[11px] text-white/15">5 task attivi</span>
+          <span className="text-[11px] text-black/15">5 task attivi</span>
         </div>
       </div>
     </div>

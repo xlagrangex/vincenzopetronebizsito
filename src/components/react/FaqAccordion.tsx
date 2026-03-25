@@ -76,16 +76,16 @@ export default function FaqAccordion() {
               key={`${activeTab}-${i}`}
               style={{ animation: `fadeSlideIn 0.4s ease ${i * 0.06}s both` }}
             >
-              <div className="h-px w-full bg-white/10" />
+              <div className="h-px w-full bg-black/10" />
               <button
                 onClick={() => setOpenIndex(isOpen ? null : i)}
                 className="flex w-full cursor-pointer items-center justify-between py-6 text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-medium text-white/50">
+                  <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-black/10 text-xs font-medium text-black/50">
                     {i + 1}
                   </div>
-                  <span className="text-base font-semibold text-white md:text-lg">{faq.question}</span>
+                  <span className="text-base font-semibold text-black md:text-lg">{faq.question}</span>
                 </div>
                 {/* +/- button */}
                 <div className="relative ml-4 flex h-6 w-6 flex-shrink-0 items-center justify-center">
@@ -104,13 +104,13 @@ export default function FaqAccordion() {
                 }}
               >
                 <div className="pb-6 pl-11">
-                  <p className="text-sm leading-[170%] text-white/50 md:text-base">{faq.answer}</p>
+                  <p className="text-sm leading-[170%] text-black/50 md:text-base">{faq.answer}</p>
                 </div>
               </div>
             </div>
           );
         })}
-        <div className="h-px w-full bg-white/10" />
+        <div className="h-px w-full bg-black/10" />
       </div>
 
       <style>{`

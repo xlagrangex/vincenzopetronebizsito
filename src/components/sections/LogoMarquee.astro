@@ -29,10 +29,10 @@ const logos = [
   <!-- Marquee track -->
   <div class="marquee-track flex w-max items-center gap-20">
     {logos.map((logo) => (
-      <div class="flex-shrink-0 text-white/20" set:html={logo} />
+      <div class="flex-shrink-0 text-black/20" set:html={logo} />
     ))}
     {logos.map((logo) => (
-      <div class="flex-shrink-0 text-white/20" aria-hidden="true" set:html={logo} />
+      <div class="flex-shrink-0 text-black/20" aria-hidden="true" set:html={logo} />
     ))}
   </div>
 </section>

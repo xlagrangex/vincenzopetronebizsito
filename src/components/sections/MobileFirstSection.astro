@@ -11,15 +11,15 @@ const mockups = [
   <!-- Sticky heading (z-index lower so cube overlaps it) -->
   <div class="mobile-first-content sticky top-0 z-[1] flex flex-col items-stretch justify-center">
     <div class="py-8 md:py-12"></div>
-    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <div class="mx-auto w-full max-w-[1000px] px-4 md:px-8 lg:px-12">
       <div class="mx-auto max-w-4xl text-center">
-        <h2 class="mobile-first-heading !text-4xl font-semibold !leading-[100%] tracking-[-0.05em] text-white md:!text-6xl lg:!text-[5.5rem]">
+        <h2 class="mobile-first-heading !text-4xl font-semibold !leading-[100%] tracking-[-0.05em] text-black md:!text-6xl lg:!text-[5.5rem]">
           Progettiamo brand,<br />
           siti web e app,<br />
           con un approccio mobile first
         </h2>
         <div class="pt-6"></div>
-        <p class="mx-auto text-sm font-medium uppercase tracking-[0.1em] text-white/50">
+        <p class="mx-auto text-sm font-medium uppercase tracking-[0.1em] text-black/50">
           70% della navigazione online<br />
           avviene oggi da smartphone.
         </p>
@@ -37,25 +37,25 @@ const mockups = [
       <!-- Side 1 (front) -->
       <div class="cube-side cube-side-1 absolute inset-0 z-[4] overflow-clip rounded-2xl bg-black" style="transform-style: preserve-3d; transform: translate3d(0, 0, 16vh); backface-visibility: hidden;">
         <img src={mockups[0].src} alt={mockups[0].alt} class="absolute inset-0 z-[1] h-full w-full object-cover" style="backface-visibility: hidden;" loading="eager" />
-        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-black/40 to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-white/40 to-transparent"></div>
       </div>
 
       <!-- Side 2 (right) -->
       <div class="cube-side cube-side-2 absolute inset-0 z-[3] overflow-clip rounded-[3vh] bg-black" style="transform-style: preserve-3d; transform-origin: 0%; transform: translate3d(100%, 0, 16vh) rotateY(90deg); backface-visibility: hidden;">
         <img src={mockups[1].src} alt={mockups[1].alt} class="absolute inset-0 z-[1] h-full w-full object-cover" style="backface-visibility: hidden;" loading="eager" />
-        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-black/40 to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-white/40 to-transparent"></div>
       </div>
 
       <!-- Side 3 (back) -->
       <div class="cube-side cube-side-3 absolute inset-x-0 top-0 z-[2] h-full overflow-clip rounded-[3vh] bg-black" style="transform-style: preserve-3d; transform: rotateY(180deg) translate3d(0%, 0%, 16vh); backface-visibility: hidden;">
         <img src={mockups[2].src} alt={mockups[2].alt} class="absolute inset-0 z-[1] h-full w-full object-cover" style="backface-visibility: hidden;" loading="eager" />
-        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-black/40 to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-white/40 to-transparent"></div>
       </div>
 
       <!-- Side 4 (left) -->
       <div class="cube-side cube-side-4 absolute inset-0 z-[1] overflow-clip rounded-[3vh] bg-black" style="transform-style: preserve-3d; transform-origin: 0%; transform: translate3d(0%, 0, -16vh) rotateY(-90deg); backface-visibility: hidden;">
         <img src={mockups[3].src} alt={mockups[3].alt} class="absolute inset-0 z-[1] h-full w-full object-cover" style="backface-visibility: hidden;" loading="eager" />
-        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-black/40 to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 z-[2] h-[20%] bg-gradient-to-b from-white/40 to-transparent"></div>
       </div>
 
     </div>

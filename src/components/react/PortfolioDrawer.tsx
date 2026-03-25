@@ -127,12 +127,12 @@ function DrawerPanel({ isOpen, onClose }: PortfolioDrawerProps) {
           className="flex shrink-0 items-center justify-between px-6 py-5"
           style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}
         >
-          <h3 className="text-lg font-semibold tracking-tight text-white">
+          <h3 className="text-lg font-semibold tracking-tight text-black">
             I nostri lavori
           </h3>
           <button
             onClick={onClose}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 hover:bg-white/10"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 hover:bg-black/10"
             aria-label="Chiudi pannello portfolio"
           >
             <svg
@@ -145,7 +145,7 @@ function DrawerPanel({ isOpen, onClose }: PortfolioDrawerProps) {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-white/70"
+              className="text-black/70"
             >
               <path d="M18 6 6 18" />
               <path d="m6 6 12 12" />
@@ -194,7 +194,7 @@ function DrawerPanel({ isOpen, onClose }: PortfolioDrawerProps) {
                     loading="lazy"
                   />
                 </div>
-                <p className="mt-3 text-sm font-medium tracking-tight text-white/70 transition-colors duration-200 group-hover:text-white/90">
+                <p className="mt-3 text-sm font-medium tracking-tight text-black/70 transition-colors duration-200 group-hover:text-black/90">
                   {item.name}
                 </p>
               </div>
@@ -207,7 +207,7 @@ function DrawerPanel({ isOpen, onClose }: PortfolioDrawerProps) {
           className="shrink-0 px-6 py-5"
           style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}
         >
-          <p className="mb-2 text-sm text-white/50">Vuoi vedere di più?</p>
+          <p className="mb-2 text-sm text-black/50">Vuoi vedere di più?</p>
           <a
             href="/portfolio"
             className="inline-flex items-center gap-1 text-sm font-medium transition-colors duration-200"

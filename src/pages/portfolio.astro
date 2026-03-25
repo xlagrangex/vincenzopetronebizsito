@@ -33,20 +33,20 @@ const projects = [
 const categories = ["Tutti", "Siti vetrina", "Ecommerce", "Web App", "Landing + Ads", "Monopagina"];
 ---
 
-<Layout title="Portfolio — BizStudio" description="Scopri i progetti web realizzati da BizStudio. Siti vetrina, ecommerce, landing page e molto altro.">
+<Layout title="Portfolio — Vincenzo Petrone Biz" description="Scopri i progetti web realizzati da Vincenzo Petrone Biz. Siti vetrina, ecommerce, landing page e molto altro.">
   <main class="pt-28 pb-10">
-    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <div class="mx-auto w-full max-w-[1000px] px-4 md:px-8 lg:px-12">
       <!-- Header -->
       <div class="portfolio-label mb-4 flex items-center gap-3">
-        <div class="h-px w-8 bg-white/30"></div>
-        <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-white/40">portfolio</span>
-        <div class="h-px w-8 bg-white/30"></div>
+        <div class="h-px w-8 bg-black/30"></div>
+        <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-black/40">portfolio</span>
+        <div class="h-px w-8 bg-black/30"></div>
       </div>
 
-      <h1 class="portfolio-heading text-white mb-4">Progetti Web</h1>
+      <h1 class="portfolio-heading text-black mb-4">Progetti Web</h1>
 
-      <p class="portfolio-desc text-sm text-white/40 md:text-base max-w-xl mb-10">
-        Di seguito alcuni dei siti web di cui abbiamo seguito: <strong class="text-white/60">progettazione</strong>, <strong class="text-white/60">creazione</strong> e <strong class="text-white/60">realizzazione</strong>.
+      <p class="portfolio-desc text-sm text-black/40 md:text-base max-w-xl mb-10">
+        Di seguito alcuni dei siti web di cui abbiamo seguito: <strong class="text-black/60">progettazione</strong>, <strong class="text-black/60">creazione</strong> e <strong class="text-black/60">realizzazione</strong>.
       </p>
 
       <!-- Filter tabs -->
@@ -58,7 +58,7 @@ const categories = ["Tutti", "Siti vetrina", "Ecommerce", "Web App", "Landing + 
       <div class="portfolio-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <div class="portfolio-card group" data-category={project.category} data-project-name={project.name} data-project-url={project.url}>
-            <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-white/20">
+            <div class="overflow-hidden rounded-2xl border border-black/10 bg-black/5 transition-all duration-300 hover:border-black/20">
               <!-- Screenshot -->
               <div class="relative overflow-hidden">
                 <img
@@ -70,14 +70,14 @@ const categories = ["Tutti", "Siti vetrina", "Ecommerce", "Web App", "Landing + 
                 <!-- Hover overlay con 2 bottoni slide replace -->
                 <div class="absolute inset-0 flex items-center justify-center gap-3 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   {project.slug && (
-                    <a href={project.slug} class="group/btn relative overflow-hidden rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20">
+                    <a href={project.slug} class="group/btn relative overflow-hidden rounded-full border border-black/30 bg-black/10 px-5 py-2.5 text-sm font-semibold text-black backdrop-blur-sm transition-all duration-200 hover:bg-white/20">
                       <span class="relative block overflow-hidden">
                         <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-full">Vedi progetto</span>
                         <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0">Vedi progetto</span>
                       </span>
                     </a>
                   )}
-                  <button class="visit-btn group/btn relative cursor-pointer overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,0,0,0.3)]" style="background: linear-gradient(135deg, #1B4088, #A51B80 50%, #DA5713);">
+                  <button class="visit-btn group/btn relative cursor-pointer overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold text-black shadow-[0_8px_20px_rgba(0,0,0,0.3)]" style="background: linear-gradient(135deg, #1B4088, #A51B80 50%, #DA5713);">
                     <span class="relative block overflow-hidden">
                       <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-full">Visita il sito</span>
                       <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0">Visita il sito</span>
@@ -91,9 +91,9 @@ const categories = ["Tutti", "Siti vetrina", "Ecommerce", "Web App", "Landing + 
                 <!-- Nome + sottotitolo + logo a destra -->
                 <div class="flex items-start justify-between gap-4">
                   <div class="flex-1">
-                    <h3 class="!text-xl !leading-[120%] font-semibold text-white">{project.name}</h3>
+                    <h3 class="!text-xl !leading-[120%] font-semibold text-black">{project.name}</h3>
                     {project.subtitle && (
-                      <span class="mt-0.5 block text-sm text-white/40">{project.subtitle}</span>
+                      <span class="mt-0.5 block text-sm text-black/40">{project.subtitle}</span>
                     )}
                   </div>
                   {project.logo && (
@@ -120,15 +120,15 @@ const categories = ["Tutti", "Siti vetrina", "Ecommerce", "Web App", "Landing + 
 
                 <!-- Pillole: categoria + tags -->
                 <div class="mt-4 flex flex-wrap gap-1.5">
-                  <span class="rounded-full px-3 py-1 text-[0.7rem] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)]" style="background: linear-gradient(135deg, #1B4088, #A51B80 50%, #DA5713);">{project.category}</span>
+                  <span class="rounded-full px-3 py-1 text-[0.7rem] font-semibold text-black transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)]" style="background: linear-gradient(135deg, #1B4088, #A51B80 50%, #DA5713);">{project.category}</span>
                   {project.tags && project.tags.map((tag) => (
-                    <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[0.7rem] font-medium text-white/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:text-white/60 hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)]">{tag}</span>
+                    <span class="rounded-full border border-black/10 bg-black/5 px-2.5 py-1 text-[0.7rem] font-medium text-black/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-black/20 hover:text-black/60 hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)]">{tag}</span>
                   ))}
                 </div>
 
                 <!-- Descrizione -->
                 {project.description && (
-                  <p class="mt-4 text-sm leading-[170%] text-white/50">{project.description}</p>
+                  <p class="mt-4 text-sm leading-[170%] text-black/50">{project.description}</p>
                 )}
               </div>
             </div>

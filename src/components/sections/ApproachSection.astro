@@ -31,21 +31,21 @@ const services = [
 ---
 
 <section class="pt-10 pb-10">
-  <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+  <div class="mx-auto w-full max-w-[1000px] px-4 md:px-8 lg:px-12">
     <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
       <!-- Left: heading sticky -->
       <div class="lg:sticky lg:top-32 lg:self-start">
         <div class="flex items-center gap-3 mb-8">
-          <div class="h-px w-8 bg-white/30"></div>
-          <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-white/40">Il nostro approccio</span>
+          <div class="h-px w-8 bg-black/30"></div>
+          <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-black/40">Il nostro approccio</span>
         </div>
 
-        <h3 class="approach-heading !text-4xl font-semibold !leading-[110%] tracking-[-0.05em] text-white md:!text-5xl lg:!text-[3.5rem]">
+        <h3 class="approach-heading !text-4xl font-semibold !leading-[110%] tracking-[-0.05em] text-black md:!text-5xl lg:!text-[3.5rem]">
           Non vendiamo siti.<br />
           Costruiamo leve per il tuo business.
         </h3>
 
-        <p class="mt-6 text-lg font-medium leading-[140%] tracking-[-0.01em] text-white/60 md:text-xl">
+        <p class="mt-6 text-lg font-medium leading-[140%] tracking-[-0.01em] text-black/60 md:text-xl">
           Ogni pixel ha uno scopo.<br />
           Ogni click ha un obiettivo.<br />
           Ogni progetto ha un ritorno.
@@ -59,7 +59,7 @@ const services = [
       <!-- Right: service cards -->
       <div class="flex flex-col gap-6">
         {services.map((service) => (
-          <div class="service-card group rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors duration-300 hover:bg-white/[0.08]">
+          <div class="service-card group rounded-2xl border border-black/10 bg-black/5 p-6 transition-colors duration-300 hover:bg-white/[0.08]">
             <div class="mb-5 overflow-hidden rounded-xl">
               <img
                 src={service.image}
@@ -68,10 +68,10 @@ const services = [
                 loading="lazy"
               />
             </div>
-            <h4 class="text-lg font-semibold tracking-[-0.02em] text-white md:text-xl">
+            <h4 class="text-lg font-semibold tracking-[-0.02em] text-black md:text-xl">
               {service.title}
             </h4>
-            <p class="mt-2 text-sm leading-[160%] text-white/50 md:text-base">
+            <p class="mt-2 text-sm leading-[160%] text-black/50 md:text-base">
               {service.description}
             </p>
           </div>
