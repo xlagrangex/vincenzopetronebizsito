@@ -1,0 +1,103 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import SmoothScroll from "../components/react/SmoothScroll.tsx";
+import CookieBanner from "../components/react/CookieBanner.tsx";
+
+interface Props {
+  title: string;
+  lastUpdated: string;
+}
+
+const { title, lastUpdated } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — BizStudio</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <SmoothScroll client:load />
+    <CookieBanner client:load />
+
+    <div id="site-content">
+      <div class="glow-circle"></div>
+      <div class="glow-circle glow-circle--2"></div>
+      <Navbar />
+
+      <main class="pt-32 pb-20">
+        <div class="mx-auto w-full max-w-[800px] px-4 md:px-8">
+          <h1 class="!text-3xl md:!text-4xl text-white mb-2">{title}</h1>
+          <p class="text-sm text-white/30 mb-12">Ultimo aggiornamento: {lastUpdated}</p>
+
+          <div class="legal-content">
+            <slot />
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  .legal-content h2 {
+    font-size: 1.25rem !important;
+    line-height: 130% !important;
+    color: white;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-content h3 {
+    font-size: 1.1rem !important;
+    line-height: 130% !important;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-content p {
+    font-size: 0.9rem;
+    line-height: 170%;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+  }
+
+  .legal-content ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content li {
+    font-size: 0.9rem;
+    line-height: 170%;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.25rem;
+  }
+
+  .legal-content a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+  }
+
+  .legal-content a:hover {
+    color: white;
+  }
+
+  .legal-content strong {
+    color: rgba(255, 255, 255, 0.7);
+  }
+</style>

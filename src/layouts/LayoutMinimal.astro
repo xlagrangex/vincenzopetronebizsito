@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import SmoothScroll from "../components/react/SmoothScroll.tsx";
+import CookieBanner from "../components/react/CookieBanner.tsx";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "BizStudio - Digital Agency" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <SmoothScroll client:load />
+    <CookieBanner client:load />
+
+    <div id="site-content">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<script>
+  // Cleanup GSAP ScrollTrigger prima del DOM swap (View Transitions)
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:before-swap", () => {
+    // Uccidi tutti i ScrollTrigger della vecchia pagina
+    ScrollTrigger.getAll().forEach(t => t.kill());
+    // Uccidi tutti i tween attivi
+    gsap.killTweensOf("*");
+  });
+
+  // Dopo il swap, refresha ScrollTrigger per i nuovi elementi
+  document.addEventListener("astro:page-load", () => {
+    ScrollTrigger.refresh();
+  });
+</script>

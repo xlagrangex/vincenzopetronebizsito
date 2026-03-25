@@ -1,0 +1,81 @@
+---
+import HamburgerMenu from "./react/HamburgerMenu.tsx";
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Servizi", href: "#servizi" },
+  { label: "Portfolio", href: "/portfolio", count: 3 },
+  { label: "Recensioni", href: "#recensioni" },
+  { label: "Contattaci", href: "/contatto" },
+];
+---
+
+<nav class="navbar fixed top-0 z-[100] w-full bg-black/80 pt-2 backdrop-blur-[14px]">
+  <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center justify-between">
+        <!-- Brand -->
+        <div class="flex items-center gap-3.5">
+          <a href="/" class="inline-block">
+            <img
+              src="/images/Group-15.png"
+              alt="BizStudio"
+              class="w-32"
+              loading="eager"
+            />
+          </a>
+          <div class="hidden items-center gap-3 md:flex">
+            <div class="h-4 w-px bg-white/20"></div>
+            <span class="text-xs font-bold uppercase text-white">
+              marketing & web agency
+            </span>
+          </div>
+        </div>
+
+        <!-- Desktop links -->
+        <div class="hidden items-center gap-8 lg:flex">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="navbar-link group relative inline-flex items-center gap-2 text-white"
+            >
+              <div class="relative overflow-clip">
+                <span class="block font-semibold transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                  {link.label}
+                </span>
+                <span class="absolute inset-0 block translate-y-full font-semibold transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
+                  {link.label}
+                </span>
+              </div>
+              {link.count && (
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-[0.65rem] font-bold text-white">
+                  {link.count}
+                </span>
+              )}
+              <div class="navbar-link-dot absolute -right-1.5 top-0.5 h-1 w-1 rounded-full bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            </a>
+          ))}
+        </div>
+
+        <!-- CTA button -->
+        <a
+          href="/parti-da-qui"
+          class="btn-gradient group hidden rounded-full text-sm font-semibold text-white shadow-[0_8px_16px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_12px_24px_rgba(165,27,128,0.3)] bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] saturate-[1.15] lg:inline-block"
+        >
+          <div class="relative overflow-hidden rounded-full px-5 py-2 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] transition-shadow duration-300 group-hover:shadow-[inset_0_0_12px_rgba(255,255,255,0.5)]">
+            <span class="relative z-[5] block overflow-hidden tracking-[-0.03em]">
+              <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">Parti da qui</span>
+              <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">Parti da qui</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Hamburger (always visible, React island) -->
+        <HamburgerMenu client:load />
+      </div>
+
+      <!-- Bottom line -->
+      <div class="h-px w-full bg-white/10"></div>
+    </div>
+  </div>
+</nav>

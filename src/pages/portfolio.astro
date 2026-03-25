@@ -1,0 +1,186 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import PortfolioFilter from "../components/react/PortfolioFilter.tsx";
+import ProjectBrowser from "../components/react/ProjectBrowser.tsx";
+
+const projects = [
+  { name: "Misha Travel", subtitle: "Tour operator", image: "/images/misha-travel-screenshot.png", category: "Web App", url: "https://mishatravel.com", description: "Tour operator con dashboard personalizzata per gestione agenzia, piattaforma booking e area B2B dedicata alle agenzie di viaggio.", logo: "/images/logo-mishatravel.webp", logoBg: true, tags: ["Piattaforma booking", "Area agenzie B2B", "Catalogo itinerari", "Dashboard gestionale"], slug: "/portfolio/misha-travel" },
+  { name: "Collezione Burlamacco", subtitle: "Carnevale di Viareggio", image: "/images/collezione-burlamacco-screenshot.png", category: "Ecommerce", url: "https://collezioneburlamacco.it", description: "E-commerce ufficiale dei gadget del Carnevale di Viareggio. Vetrina dei carri allegorici e punto vendita della collezione Burlamacco.", logo: "/images/logo-burlamacco.png", logoBg: true, tags: ["Gadget ufficiali", "Carri del Carnevale", "Shop online"] },
+  { name: "Vi.cla Future", subtitle: "Segnaletica ferroviaria", image: "/images/vicla-screenshot.png", category: "Siti vetrina", url: "https://vicla.it", description: "Azienda specializzata in impianti elettrici e segnaletica ferroviaria. Partner strategico di Ferrovie dello Stato Italiano.", logo: "/images/logo-vicla.png", logoBg: true, tags: ["Settore ferroviario", "Partner FS Italiane", "Impianti elettrici"] },
+  { name: "Reital Plus", subtitle: "Piattaforma", image: "/images/retailplus-screenshot.png", category: "Web App", url: "https://retailplus.co", description: "Dashboard gestionale per il merchandising in farmacia. Piattaforma web per il monitoraggio e l'ottimizzazione degli allestimenti.", logo: "/images/logo-retailplus.png", logoBg: true, tags: ["Dashboard gestionale", "Merchandising", "Farmacie"] },
+  { name: "Kenekita", subtitle: "Property Management", image: "/images/kenekita-screenshot.png", category: "Web App", url: "https://kenekita.com", description: "Piattaforma di property management per affitti turistici in Sardegna. Ville e appartamenti selezionati per vacanze tra mare e tradizione.", logo: "/images/logo-kenekita.png", logoBg: true, tags: ["Affitti turistici", "Sardegna", "Property management"] },
+  { name: "LogPlus", subtitle: "Piattaforma logistica", image: "/images/logplus-screenshot.png", category: "Web App", url: "https://logplus.it", description: "Piattaforma web per la gestione logistica e ottimizzazione dei flussi operativi aziendali.", tags: ["Logistica", "Gestione flussi", "Dashboard"] },
+  { name: "Alterego Immobiliare", subtitle: "Agenzia immobiliare", image: "/images/alteregoimmobiliare-screenshot.png", category: "Siti vetrina", url: "https://alteregoimmobiliare.it", description: "Agenzia immobiliare di fiducia a Genova e Casale Monferrato. Vendita e affitto appartamenti, ville e immobili commerciali.", logo: "/images/logo-alteregoimmobiliare.webp", logoBg: true, tags: ["Immobiliare", "Genova", "Vendita e affitto"] },
+  { name: "Truckstore Italia", subtitle: "Automotive", image: "/images/truckstoreitalia-screenshot.png", category: "Siti vetrina", url: "https://truckstoreitalia.com", description: "Concessionaria specializzata nella vendita di veicoli commerciali e truck. Ampio catalogo con schede dettagliate e localizzazione.", logo: "/images/logo-truckstoreitalia.png", logoBg: true, tags: ["Automotive", "Veicoli commerciali", "Concessionaria"] },
+  { name: "Impressioni Quotidiane", subtitle: "Media/Blog", image: "/images/impressioniquotidiane-screenshot.png", category: "Siti vetrina", url: "https://impressioniquotidiane.it", description: "Blog e portale di contenuti editoriali con articoli su lifestyle, attualit\u00e0 e tendenze quotidiane.", logo: "/images/logo-impressioniquotidiane.png", tags: ["Blog", "Contenuti editoriali", "Lifestyle"] },
+  { name: "Blue Home Technology", subtitle: "Fotovoltaico", image: "/images/bhtsrl-screenshot.png", category: "Siti vetrina", url: "https://bhtsrl.online", description: "Soluzioni innovative e sostenibili per la casa: impianti fotovoltaici, solare termico, climatizzazione e smart home.", logo: "/images/logo-bhtsrl.png", tags: ["Fotovoltaico", "Smart Home", "Energia sostenibile"] },
+  { name: "Galman Group", subtitle: "Consulenza aziendale", image: "/images/galmangroup-screenshot.png", category: "Siti vetrina", url: "https://galmangroup.it", description: "Consulenza aziendale e ottimizzazione costi. Riduzione spese, negoziazione fornitori e valorizzazione del patrimonio immobiliare.", logo: "/images/logo-galmangroup.png", logoBg: true, tags: ["Consulenza", "Ottimizzazione costi", "Immobiliare"] },
+  { name: "K Garage", subtitle: "Autofficina", image: "/images/kgarage-screenshot.png", category: "Siti vetrina", url: "https://kgarage.it", description: "Officina meccanica a Somma Lombardo. Riparazioni auto, tagliandi, diagnostica elettronica e carrozzeria dal 2009.", logo: "/images/logo-kgarage.png", tags: ["Autofficina", "Riparazioni auto", "Diagnostica"] },
+  { name: "GV Jewelry", subtitle: "Gioielleria", image: "/images/gvjewelry-screenshot.png", category: "Ecommerce", url: "https://gv-jewelry.com", description: "E-commerce di gioielli artigianali. Collezioni esclusive con design ricercato e materiali pregiati.", logo: "/images/logo-gvjewelry.png", tags: ["Gioielli", "Artigianale", "Shop online"] },
+  { name: "ANIMA", subtitle: "Electronic Music Events", image: "/images/animaent-screenshot.png", category: "Monopagina", url: "https://animaent.club", description: "Until the Sun Rises — Sito monopagina per eventi di musica elettronica.", logo: "/images/logo-animaent.webp", tags: ["Eventi musicali", "Electronic music", "One-page"] },
+  { name: "Visevis", subtitle: "Network business", image: "/images/visevis-screenshot.png", category: "Monopagina", url: "https://visevis.it", description: "Il network di eccellenze per il tuo business. Piattaforma di connessione tra professionisti e aziende.", logo: "/images/logo-visevis.png", logoBg: true, tags: ["Network", "Business", "Consulenza"] },
+  { name: "Andrea Muccioli", subtitle: "Osteopata", image: "/images/andreamuccioli-screenshot.png", category: "Monopagina", url: "https://andreamuccioli.com", description: "Sito professionale per osteopata con prenotazione visite online, presentazione servizi e contatti.", logo: "/images/logo-andreamuccioli.png", tags: ["Osteopatia", "Prenotazione online", "Sanitario"] },
+  { name: "Geriatra Napoli", subtitle: "Sanitario", image: "/images/geriatranapoli-screenshot.png", category: "Monopagina", url: "https://geriatranapoli.com", description: "Servizio di geriatria a domicilio del Dott. Antonio Casale a Napoli. Visite specialistiche e assistenza anziani.", logo: "/images/logo-geriatranapoli.png", logoBg: true, tags: ["Geriatria", "Visite a domicilio", "Sanitario"] },
+  { name: "Dott.ssa Nunzia Giordano", subtitle: "Sanitario", image: "/images/nunziagiordano-screenshot.png", category: "Monopagina", url: "https://nunziagiordano.it", description: "Sito professionale della Dott.ssa Nunzia Giordano. Presentazione dello studio medico, servizi e prenotazione visite.", logo: "/images/logo-nunziagiordano.png", tags: ["Studio medico", "Prenotazione", "Sanitario"] },
+  { name: "Inviewer", subtitle: "Poliambulatorio", image: "/images/inviewer-screenshot.png", category: "Monopagina", url: "https://inviewer.it", description: "Multistudio di osteopatia e fisiokinesiterapia con sedi a Bologna, Zola Predosa e Longiano.", logo: "/images/logo-inviewer.png", logoBg: true, tags: ["Osteopatia", "Fisioterapia", "Poliambulatorio"] },
+  { name: "Inwait", subtitle: "Startup Ristoranti", image: "/images/inwait-screenshot.png", category: "Monopagina", url: "https://inwait.it", description: "Startup innovativa per la gestione delle attese nei ristoranti. Soluzione digitale per ottimizzare il servizio.", logo: "/images/logo-inwait.png", tags: ["Ristorazione", "Startup", "Gestione attese"] },
+  { name: "Antica Roccia B&B", subtitle: "Case vacanza", image: "/images/anticaroccia-screenshot.png", category: "Monopagina", url: "https://anticaroccia.com", description: "Case vacanza a Rocca Calascio, nel cuore dell'Abruzzo. Due soluzioni di soggiorno con vista sulla storica fortezza.", logo: "/images/logo-anticaroccia.png", logoBg: true, tags: ["Case vacanza", "Abruzzo", "Turismo"] },
+  { name: "Alessandra D'Aniello", subtitle: "Artista", image: "/images/alessandradaniello-screenshot.png", category: "Monopagina", url: "https://aleph-lipoq7ap3-vincenzopetronebiz-4605s-projects.vercel.app/", description: "Portfolio dell'architetto e ceramic designer Alessandra D'Aniello. Collezioni artistiche e progetti di design.", logo: "/images/logo-alessandradaniello.svg", tags: ["Architettura", "Ceramic design", "Portfolio"] },
+  { name: "Ondedurto Bologna", subtitle: "Terapia", image: "/images/ondedurtobologna-screenshot.png", category: "Landing + Ads", url: "https://ondedurtobologna.it", description: "Landing page per il servizio di onde d'urto focali a Bologna e Zola Predosa. Trattamenti specialistici Inviewer.", logo: "/images/logo-ondedurtobologna.png", tags: ["Onde d'urto", "Fisioterapia", "Bologna"] },
+];
+
+const categories = ["Tutti", "Siti vetrina", "Ecommerce", "Web App", "Landing + Ads", "Monopagina"];
+---
+
+<Layout title="Portfolio — BizStudio" description="Scopri i progetti web realizzati da BizStudio. Siti vetrina, ecommerce, landing page e molto altro.">
+  <main class="pt-28 pb-10">
+    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+      <!-- Header -->
+      <div class="portfolio-label mb-4 flex items-center gap-3">
+        <div class="h-px w-8 bg-white/30"></div>
+        <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-white/40">portfolio</span>
+        <div class="h-px w-8 bg-white/30"></div>
+      </div>
+
+      <h1 class="portfolio-heading text-white mb-4">Progetti Web</h1>
+
+      <p class="portfolio-desc text-sm text-white/40 md:text-base max-w-xl mb-10">
+        Di seguito alcuni dei siti web di cui abbiamo seguito: <strong class="text-white/60">progettazione</strong>, <strong class="text-white/60">creazione</strong> e <strong class="text-white/60">realizzazione</strong>.
+      </p>
+
+      <!-- Filter tabs -->
+      <div class="portfolio-filter-wrap">
+        <PortfolioFilter client:load />
+      </div>
+
+      <!-- Projects grid -->
+      <div class="portfolio-grid grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <div class="portfolio-card group" data-category={project.category} data-project-name={project.name} data-project-url={project.url}>
+            <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-white/20">
+              <!-- Screenshot -->
+              <div class="relative overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  class="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                  loading="lazy"
+                />
+                <!-- Hover overlay con 2 bottoni slide replace -->
+                <div class="absolute inset-0 flex items-center justify-center gap-3 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {project.slug && (
+                    <a href={project.slug} class="group/btn relative overflow-hidden rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20">
+                      <span class="relative block overflow-hidden">
+                        <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-full">Vedi progetto</span>
+                        <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0">Vedi progetto</span>
+                      </span>
+                    </a>
+                  )}
+                  <button class="visit-btn group/btn relative cursor-pointer overflow-hidden rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,0,0,0.3)]" style="background: linear-gradient(135deg, #1B4088, #A51B80 50%, #DA5713);">
+                    <span class="relative block overflow-hidden">
+                      <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-full">Visita il sito</span>
+                      <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0">Visita il sito</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Info -->
+              <div class="p-5">
+                <!-- Nome + sottotitolo + logo a destra -->
+                <div class="flex items-start justify-between gap-4">
+                  <div class="flex-1">
+                    <h3 class="!text-xl !leading-[120%] font-semibold text-white">{project.name}</h3>
+                    {project.subtitle && (
+                      <span class="mt-0.5 block text-sm text-white/40">{project.subtitle}</span>
+                    )}
+                  </div>
+                  {project.logo && (
+                    <div class:list={["group/logo flex-shrink-0", project.logoBg ? "rounded-full bg-white px-2.5 py-1" : ""]}>
+                      <div class="relative overflow-clip" style={project.logoBg ? "height: 22px;" : "height: 30px;"}>
+                        <img
+                          src={project.logo}
+                          alt=""
+                          class="block w-auto object-contain transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/logo:-translate-y-full group-hover/logo:opacity-0"
+                          style={project.logoBg ? "height: 22px;" : "height: 30px;"}
+                          loading="lazy"
+                        />
+                        <img
+                          src={project.logo}
+                          alt=""
+                          class="absolute left-0 top-full w-auto object-contain opacity-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/logo:top-0 group-hover/logo:opacity-100"
+                          style={project.logoBg ? "height: 22px;" : "height: 30px;"}
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <!-- Pillole: categoria + tags -->
+                <div class="mt-4 flex flex-wrap gap-1.5">
+                  <span class="rounded-full px-3 py-1 text-[0.7rem] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)]" style="background: linear-gradient(135deg, #1B4088, #A51B80 50%, #DA5713);">{project.category}</span>
+                  {project.tags && project.tags.map((tag) => (
+                    <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[0.7rem] font-medium text-white/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:text-white/60 hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)]">{tag}</span>
+                  ))}
+                </div>
+
+                <!-- Descrizione -->
+                {project.description && (
+                  <p class="mt-4 text-sm leading-[170%] text-white/50">{project.description}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Browser interno -->
+      <ProjectBrowser projects={projects} client:load />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initPortfolioAnimations() {
+    const elems = [".portfolio-label", ".portfolio-heading", ".portfolio-desc", ".portfolio-filter-wrap", ".portfolio-card"];
+
+    // Controlla che gli elementi esistano (siamo sulla pagina giusta)
+    if (!document.querySelector(".portfolio-label")) return;
+
+    gsap.set(elems, { y: 25, opacity: 0 });
+
+    // Header elements
+    gsap.to([".portfolio-label", ".portfolio-heading", ".portfolio-desc", ".portfolio-filter-wrap"], {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.04,
+      delay: 0.15, // piccolo delay per far finire la view transition
+    });
+
+    // Cards
+    gsap.to(".portfolio-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.03,
+      delay: 0.3,
+      onComplete: () => {
+        gsap.utils.toArray<HTMLElement>(".portfolio-card").forEach(c => { c.style.opacity = "1"; });
+      },
+    });
+  }
+
+  // Esegui sia al primo load che dopo navigazione View Transitions
+  document.addEventListener("astro:page-load", initPortfolioAnimations);
+</script>

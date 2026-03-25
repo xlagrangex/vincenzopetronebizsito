@@ -1,0 +1,226 @@
+---
+const benefits = [
+  { title: "Consulenza strategica continua", desc: "Supporto costante per la crescita del tuo business" },
+  { title: "Network esclusivo di imprenditori", desc: "Connettiti con altri partner BizStudio" },
+  { title: "Priorità su supporto e aggiornamenti", desc: "Accesso VIP a tutti i nostri servizi" },
+];
+
+const cards = [
+  { icon: "/images/Vector-216.png", iconSize: "w-9", author: "Team BizStudio", quote: "Designer, sviluppatori, marketer uniti dalla passione per il business" },
+  { icon: "/images/Collaborating-In-Circle.png", iconSize: "w-10", author: "Partner Selezionati", quote: "Imprenditori visionari che credono nel nostro approccio" },
+  { icon: "/images/Handshake.png", iconSize: "w-10", author: "Futuri Partner", quote: "Potresti essere il prossimo membro della famiglia" },
+];
+
+const stats = [
+  { number: 434, display: "434+", desc: '"Wow" al primo preview dai clienti' },
+  { number: 86, display: "86+", desc: "Brand aiutati nel 2025" },
+  { number: 2196, display: "2.196+", desc: "Ore di consulenza strategica dedicata" },
+];
+---
+
+<section class="testimonials-section relative pt-10 pb-10">
+  <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <!-- Line -->
+    <div class="h-px w-full bg-white/10"></div>
+
+    <div class="pt-10 md:pt-16"></div>
+
+    <!-- 3-column layout -->
+    <div class="testimonials-layout">
+      <!-- COL 1: heading + benefits -->
+      <div class="flex flex-col justify-between">
+        <div>
+          <div class="mb-4 flex items-center gap-3">
+            <div class="h-px w-8" style="background: linear-gradient(90deg, #DA5713, #A51B80);"></div>
+            <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-white/40">Bizstudio family</span>
+          </div>
+          <h3 class="testimonials-heading !leading-[100%]">Non cerchiamo clienti. Cerchiamo partner.</h3>
+        </div>
+
+        <div class="mt-10 lg:mt-0">
+          <span class="text-xl font-semibold text-white">Benefici Partner</span>
+          <div class="mt-3 h-px w-full bg-white/10"></div>
+          <div class="mt-5 flex flex-col gap-5">
+            {benefits.map((b) => (
+              <div>
+                <span class="text-base font-semibold text-white">{b.title}</span>
+                <p class="text-sm font-medium text-white/40">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 2: cover card with team circles -->
+      <div class="rounded-2xl bg-white/5 flex flex-col justify-between overflow-clip">
+        <!-- Team circles area -->
+        <div class="relative flex w-full items-center justify-center" style="aspect-ratio: 1 / 0.85;">
+          <h4 class="relative z-[5] max-w-[13rem] text-center !text-[1.25rem] font-semibold !leading-[120%] text-white">Diventiamo soci del tuo successo</h4>
+
+          <!-- Outer circle -->
+          <div class="team-circle-outer absolute flex aspect-square w-[70%] items-center justify-center rounded-full border border-white/10">
+            <img src="/images/man-1_1man-1.webp" alt="" class="team-face-outer absolute -top-[7.5%] w-[12%] rounded-full" loading="lazy" />
+            <img src="/images/woman-2_1woman-2.webp" alt="" class="team-face-outer absolute -right-[7.5%] w-[12%] rounded-full" loading="lazy" />
+            <img src="/images/man-3_1man-3.webp" alt="" class="team-face-outer absolute -bottom-[7.5%] w-[12%] rounded-full" loading="lazy" />
+            <img src="/images/woman-1_1woman-1.webp" alt="" class="team-face-outer absolute -left-[7.5%] w-[12%] rounded-full" loading="lazy" />
+          </div>
+
+          <!-- Inner circle -->
+          <div class="team-circle-inner absolute flex aspect-square w-[47%] items-center justify-center rounded-full border border-white/10">
+            <img src="/images/woman-3_1woman-3.webp" alt="" class="team-face-inner absolute left-[7.5%] top-[7.5%] w-[13.5%] rounded-full" loading="lazy" />
+            <img src="/images/man-2_1man-2.webp" alt="" class="team-face-inner absolute right-[-5%] top-[37%] w-[13.5%] rounded-full" loading="lazy" />
+            <img src="/images/woman-4_1woman-4.webp" alt="" class="team-face-inner absolute bottom-0 left-[22.5%] w-[13.5%] rounded-full" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Quote + button -->
+        <div class="flex flex-col gap-4 px-6 pb-6 pt-2">
+          <blockquote class="text-base font-normal leading-[150%] text-white/80">
+            In progetti mirati valutiamo collaborazioni basate su equity o partnership.
+          </blockquote>
+          <a
+            href="/contatto"
+            class="btn-gradient group inline-block w-full rounded-full text-center text-lg font-semibold text-white shadow-[0_16px_20px_rgba(0,0,0,0.2)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(165,27,128,0.3)]"
+          >
+            <div class="relative overflow-hidden rounded-full px-8 py-4 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] transition-shadow duration-300 group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]">
+              <div class="pointer-events-none absolute inset-0 z-[1] rounded-full">
+                <div class="expand-ball expand-ball-1"></div>
+                <div class="expand-ball expand-ball-2"></div>
+              </div>
+              <span class="relative z-[5] block overflow-hidden tracking-[-0.03em]">
+                <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">Diventa partner</span>
+                <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">Diventa partner</span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- COL 3: 3 cards stacked -->
+      <div class="flex flex-col gap-4">
+        {cards.map((card) => (
+          <div class="flex flex-1 flex-col justify-between gap-3 rounded-lg border border-white/10 bg-white/5 p-6">
+            <div class="flex items-center gap-3">
+              <img src={card.icon} alt="" class={`${card.iconSize} opacity-70`} loading="lazy" />
+              <span class="text-xl font-semibold text-white">{card.author}</span>
+            </div>
+            <div class="h-px w-full bg-white/10"></div>
+            <blockquote class="text-base font-normal leading-[150%] text-white/60">{card.quote}</blockquote>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="pt-10 md:pt-16"></div>
+
+    <!-- Stats -->
+    <div class="flex flex-col justify-between gap-10 md:flex-row">
+      {stats.map((stat) => (
+        <div class="stat-block flex flex-col gap-4">
+          <span class="stat-number text-[5rem] font-medium leading-none tracking-[-0.03em] text-white md:text-[7rem] lg:text-[10rem]" data-target={stat.number} data-display={stat.display}>{stat.display}</span>
+          <p class="max-w-[15rem] text-[1.5rem] font-semibold leading-[1.2] text-white">{stat.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="pt-8"></div>
+    <div class="h-px w-full bg-white/10"></div>
+  </div>
+</section>
+
+<style>
+  .testimonials-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .team-circle-outer {
+    animation: spin-cw 25s linear infinite;
+  }
+
+  .team-circle-inner {
+    animation: spin-ccw 18s linear infinite;
+  }
+
+  /* Counter-rotate faces to keep them upright */
+  .team-face-outer {
+    animation: spin-ccw 25s linear infinite;
+  }
+
+  .team-face-inner {
+    animation: spin-cw 18s linear infinite;
+  }
+
+  @keyframes spin-cw {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes spin-ccw {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials-layout {
+      display: grid;
+      grid-template-columns: 0.55fr 1fr 0.65fr;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+    if (!document.querySelector(".testimonials-section")) return;
+
+    gsap.from(".testimonials-heading", {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".testimonials-section",
+        start: "top 75%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    // Smooth counter animation — plays once, never reverses
+    gsap.utils.toArray<HTMLElement>(".stat-number").forEach((el) => {
+      const target = parseInt(el.dataset.target || "0");
+      const display = el.dataset.display || "0";
+      const hasDot = display.includes(".");
+      const hasPlus = display.includes("+");
+      let animated = false;
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 85%",
+        once: true,
+        onEnter: () => {
+          if (animated) return;
+          animated = true;
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: target,
+            duration: 2,
+            ease: "power3.out",
+            onUpdate: () => {
+              const v = Math.round(obj.val);
+              let str = hasDot ? v.toLocaleString("it-IT") : String(v);
+              if (hasPlus) str += "+";
+              el.textContent = str;
+            },
+          });
+        },
+      });
+    });
+  });
+</script>

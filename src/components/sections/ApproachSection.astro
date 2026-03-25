@@ -1,0 +1,121 @@
+---
+import ExpandButton from "../react/ExpandButton.tsx";
+
+const services = [
+  {
+    image: "/images/Group-459.png",
+    title: "Consegna in 7-30 Giorni, Non Mesi",
+    description: "Grazie al nostro metodo strutturato a fasi, consegniamo rapidamente senza sacrificare la qualità. Se rispetti i tempi di feedback concordati, il tuo sito è online in settimane, non mesi di attesa infinita.",
+  },
+  {
+    image: "/images/Group-451.png",
+    title: "Iper-Specializzati sui Siti Web Strategici",
+    description: "Non disperdiamo energie su mille servizi. Facciamo una cosa sola, ma la facciamo eccezionalmente bene: siti web che uniscono estetica, velocità e risultati di business concreti.",
+  },
+  {
+    image: "/images/Frame-302.png",
+    title: "Business e Conversioni, Non Solo Design",
+    description: "Ogni scelta progettuale ha uno scopo preciso: portarti clienti e fatturato. Studiamo il tuo mercato, la psicologia dei tuoi consumatori e ottimizziamo ogni elemento per massimizzare le conversioni.",
+  },
+  {
+    image: "/images/Group-456.png",
+    title: "Un Consulente Dedicato che Ti Capisce",
+    description: "Niente ticket anonimi o linguaggio tecnico incomprensibile. Hai un riferimento diretto che traduce il complesso in semplice, ti ascolta davvero e ti guida con trasparenza verso i tuoi obiettivi.",
+  },
+  {
+    image: "/images/Frame-303.png",
+    title: "Lavoriamo Finché Non È Perfetto. Per Te.",
+    description: "Continuiamo a lavorare insieme finché non guardi il sito e dici \"wow, è esattamente questo\". La tua soddisfazione è l'unica metrica che conta.",
+  },
+];
+---
+
+<section class="pt-10 pb-10">
+  <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
+      <!-- Left: heading sticky -->
+      <div class="lg:sticky lg:top-32 lg:self-start">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="h-px w-8 bg-white/30"></div>
+          <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-white/40">Il nostro approccio</span>
+        </div>
+
+        <h3 class="approach-heading !text-4xl font-semibold !leading-[110%] tracking-[-0.05em] text-white md:!text-5xl lg:!text-[3.5rem]">
+          Non vendiamo siti.<br />
+          Costruiamo leve per il tuo business.
+        </h3>
+
+        <p class="mt-6 text-lg font-medium leading-[140%] tracking-[-0.01em] text-white/60 md:text-xl">
+          Ogni pixel ha uno scopo.<br />
+          Ogni click ha un obiettivo.<br />
+          Ogni progetto ha un ritorno.
+        </p>
+
+        <div class="mt-10">
+          <ExpandButton text="Scopri come aumentiamo le vendite" variant="gradient" client:visible />
+        </div>
+      </div>
+
+      <!-- Right: service cards -->
+      <div class="flex flex-col gap-6">
+        {services.map((service) => (
+          <div class="service-card group rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors duration-300 hover:bg-white/[0.08]">
+            <div class="mb-5 overflow-hidden rounded-xl">
+              <img
+                src={service.image}
+                alt={service.title}
+                class="w-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <h4 class="text-lg font-semibold tracking-[-0.02em] text-white md:text-xl">
+              {service.title}
+            </h4>
+            <p class="mt-2 text-sm leading-[160%] text-white/50 md:text-base">
+              {service.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+    if (!document.querySelector(".service-card")) return;
+
+    // Fade in cards on scroll
+    gsap.utils.toArray<HTMLElement>(".service-card").forEach((card, i) => {
+      gsap.from(card, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+
+    // Heading animation
+    gsap.from(".approach-heading", {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".approach-heading",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
+</script>

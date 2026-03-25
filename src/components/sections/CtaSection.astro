@@ -1,0 +1,102 @@
+---
+---
+
+<section class="cta-section">
+  <div class="showreel-wrap relative flex flex-col items-center" style="height: 250vh;">
+    <!-- Sticky viewport -->
+    <div class="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+      <!-- Inner flex: texts + box -->
+      <div class="showreel-inner flex items-center justify-center">
+
+        <!-- "Noi siamo" — left -->
+        <h2 class="showreel-text-left flex-shrink-0 pr-2 text-[8vw] font-semibold leading-[105%] tracking-[-0.02em] text-white whitespace-nowrap">Noi siamo</h2>
+
+        <!-- Gradient box -->
+        <div class="showreel-box relative flex-shrink-0 overflow-clip rounded-2xl" style="width: 12vw; height: 6vw; background-image: linear-gradient(135deg, #1B4088, #A51B80 52%, #DA5713);">
+
+          <!-- CTA inside -->
+          <div class="cta-inner absolute inset-0 flex flex-col items-center justify-center px-8 text-center opacity-0">
+            <h2 class="!text-[clamp(1.5rem,4vw,3.5rem)] !leading-[110%] font-medium text-white">Pronto a far crescere il<br />tuo business?</h2>
+            <p class="mt-4 text-sm text-white/70 md:text-base max-w-[35rem]">
+              Contattaci oggi per una consulenza gratuita e scopri come possiamo trasformare la tua presenza digitale.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-5">
+              <!-- Consulenza gratuita — white button -->
+              <a
+                href="https://calendly.com/bizstudio-it/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-block rounded-full bg-white font-semibold text-black shadow-[0_8px_20px_rgba(0,0,0,0.2)] transition-all duration-300 hover:shadow-[0_12px_30px_rgba(0,0,0,0.3)]"
+              >
+                <div class="relative overflow-hidden rounded-full px-8 py-4">
+                  <span class="block overflow-hidden text-base tracking-[-0.03em]">
+                    <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">Consulenza gratuita</span>
+                    <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">Consulenza gratuita</span>
+                  </span>
+                </div>
+              </a>
+              <!-- Chiamaci — gradient button -->
+              <a
+                href="tel:+393319942136"
+                class="btn-gradient group inline-block rounded-full font-semibold text-white shadow-[0_8px_20px_rgba(0,0,0,0.2)] transition-all duration-300 hover:shadow-[0_12px_30px_rgba(165,27,128,0.3)] bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)]"
+              >
+                <div class="relative overflow-hidden rounded-full px-8 py-4 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] transition-shadow duration-300 group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]">
+                  <span class="block overflow-hidden text-base tracking-[-0.03em]">
+                    <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">Chiamaci: +39 331 994 2136</span>
+                    <span class="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">Chiamaci: +39 331 994 2136</span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logo BizStudio — right -->
+        <div class="showreel-text-right flex-shrink-0 pl-3">
+          <img src="/images/bizstudio-logo-cta.png" alt="BizStudio" class="h-[6vw] w-auto" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+    const section = document.querySelector(".cta-section");
+    const box = document.querySelector(".showreel-box") as HTMLElement;
+    const ctaInner = document.querySelector(".cta-inner") as HTMLElement;
+
+    if (!section || !box || !ctaInner) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.5,
+      },
+    });
+
+    // Box grows from small to near-fullscreen
+    tl.to(box, {
+      width: "96vw",
+      height: "92vh",
+      borderRadius: "1.5rem",
+      duration: 1,
+      ease: "none",
+    });
+
+    // CTA fades in early during the expansion
+    tl.to(ctaInner, {
+      opacity: 1,
+      duration: 0.4,
+      ease: "none",
+    }, 0.35);
+  });
+</script>

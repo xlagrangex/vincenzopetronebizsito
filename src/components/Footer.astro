@@ -1,0 +1,134 @@
+---
+import ExpandButton from "./react/ExpandButton.tsx";
+
+const pageLinks = [
+  { label: "Home", href: "/" },
+  { label: "Metodo Biz Studio", href: "/studio" },
+  { label: "Valori e Mission", href: "/studio#mission" },
+];
+
+const serviceLinks1 = [
+  { label: "Siti vetrina", href: "#" },
+  { label: "Ecommerce", href: "#" },
+  { label: "Landing page & Funnel", href: "#" },
+];
+
+const serviceLinks2 = [
+  { label: "Siti con funzionalità avanzate", href: "#" },
+  { label: "Applicativi & Gestionali", href: "#" },
+  { label: "Consulenza strategica", href: "#" },
+];
+---
+
+<footer class="pt-10 pb-6">
+  <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <div class="overflow-clip rounded-3xl bg-white p-8 md:p-10">
+      <!-- Main grid: links | social + CTA -->
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-[1fr_0.5fr]">
+        <!-- Left: link groups -->
+        <div class="flex flex-col gap-10 md:flex-row md:gap-20">
+          <!-- Pagine -->
+          <div>
+            <div class="mb-3 text-sm font-semibold text-black">Pagine</div>
+            <div class="flex flex-col gap-1">
+              {pageLinks.map((link) => (
+                <a
+                  href={link.href}
+                  class="group relative inline-block overflow-clip text-sm text-black/60 transition-colors duration-200 hover:text-black"
+                >
+                  <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">{link.label}</span>
+                  <span class="absolute inset-0 block translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">{link.label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Servizi -->
+          <div>
+            <div class="mb-3 text-sm font-semibold text-black">Servizi</div>
+            <div class="flex flex-col gap-8 md:flex-row md:gap-14">
+              <div class="flex flex-col gap-1">
+                {serviceLinks1.map((link) => (
+                  <a
+                    href={link.href}
+                    class="group relative inline-block overflow-clip text-sm text-black/60 transition-colors duration-200 hover:text-black"
+                  >
+                    <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">{link.label}</span>
+                    <span class="absolute inset-0 block translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">{link.label}</span>
+                  </a>
+                ))}
+              </div>
+              <div class="flex flex-col gap-1">
+                {serviceLinks2.map((link) => (
+                  <a
+                    href={link.href}
+                    class="group relative inline-block overflow-clip text-sm text-black/60 transition-colors duration-200 hover:text-black"
+                  >
+                    <span class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">{link.label}</span>
+                    <span class="absolute inset-0 block translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">{link.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: social + CTA -->
+        <div class="flex flex-col items-start gap-6 md:items-end">
+          <!-- Social -->
+          <div class="flex items-center gap-4">
+            <a href="https://instagram.com/bizstudio.it" target="_blank" rel="noopener noreferrer" class="transition-opacity duration-200 hover:opacity-60">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="transition-opacity duration-200 hover:opacity-60">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" class="transition-opacity duration-200 hover:opacity-60">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/><path d="M8.56 2.75c4.37 6 6 12.37 6.44 18.5"/></svg>
+            </a>
+          </div>
+
+          <!-- CTA -->
+          <div class="flex flex-col items-start gap-2 md:items-end">
+            <span class="text-sm font-semibold text-black">Richiedi un preventivo</span>
+            <ExpandButton text="Sei nuovo? Parti da qui" variant="gradient" client:visible />
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal bar -->
+      <div class="mt-10 flex flex-col items-start justify-between gap-4 border-t border-black/10 pt-6 md:flex-row md:items-center">
+        <span class="text-xs text-[#6b6b6b]">&copy; {new Date().getFullYear()} BizStudio</span>
+        <div class="flex flex-wrap items-center gap-6">
+          <a href="/legal/cookie-policy" class="text-xs font-medium text-[#6b6b6b] transition-colors duration-200 hover:text-black">Cookie Policy</a>
+          <a href="/legal/privacy-policy" class="text-xs font-medium text-[#6b6b6b] transition-colors duration-200 hover:text-black">Privacy Policy</a>
+          <a href="/legal/terms" class="text-xs font-medium text-[#6b6b6b] transition-colors duration-200 hover:text-black">Termini & Condizioni</a>
+          <button onclick="window.__reopenCookieBanner?.()" class="cursor-pointer text-xs font-medium text-[#6b6b6b] transition-colors duration-200 hover:text-black">Gestisci Cookie</button>
+        </div>
+      </div>
+
+      <!-- Info aziendali -->
+      <div class="mt-6 flex flex-col items-start justify-between gap-3 border-t border-black/10 pt-5 text-[0.65rem] text-[#999] md:flex-row md:items-center">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span>BizStudio™ è un nome commerciale di Vincenzo Petrone — P.IVA IT09771201218</span>
+          <span>info@bizstudio.it</span>
+          <span>+39 331 994 2136</span>
+        </div>
+        <details class="mt-2 md:mt-0 md:max-w-[55%]">
+          <summary class="cursor-pointer text-[0.65rem] font-medium text-[#888] transition-colors duration-200 hover:text-black select-none">Note legali e proprietà intellettuale</summary>
+          <p class="mt-2 text-[0.6rem] leading-[170%] text-[#888] text-justify">
+            Il contenuto del sito bizstudio.it è di proprietà di Vincenzo Petrone (P.IVA IT09771201218) ed è vietata la riproduzione anche parziale. Tutti i contenuti presenti sul sito sono protetti dalle leggi in materia di proprietà intellettuale e/o industriale. Altri marchi, nomi di prodotti, nomi d'azienda e loghi contenuti in questo sito possono essere marchi di proprietà o marchi registrati dei rispettivi proprietari.
+          </p>
+        </details>
+      </div>
+
+      <!-- Footer logo -->
+      <img
+        src="/images/footer-logo.jpg"
+        alt=""
+        class="mt-6 w-full opacity-10"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</footer>

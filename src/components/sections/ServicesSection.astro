@@ -1,0 +1,196 @@
+---
+const services = [
+  {
+    number: 1,
+    title: "Siti vetrina",
+    tags: ["Multi-pagina", "One-page", "Design moderno", "Responsive"],
+    image: "/images/website.jpg",
+    description: "Siti vetrina professionali che rappresentano la tua identità digitale. Struttura multi-pagina o one-page con design contemporaneo. Soluzioni scalabili che comunicano credibilità e qualità.",
+    idealFor: "Professionisti, studi, piccole attività locali, consulenti, startup in pre-lancio.",
+  },
+  {
+    number: 2,
+    title: "Ecommerce",
+    tags: ["Catalogo prodotti", "Pagamenti integrati", "Gestione ordini", "Multi-valuta"],
+    image: "/images/ecommerce-hero.webp",
+    description: "Piattaforme ecommerce complete con checkout ottimizzato, gestione inventario e integrazione pagamenti. Soluzione performante per vendere online con focus su usabilità e conversione.",
+    idealFor: "Retail, brand, rivenditori, produttori, dropshipping, subscription box",
+  },
+  {
+    number: 3,
+    title: "Landing page & Funnel",
+    tags: ["Alta conversione", "Design fluido", "A/B testing", "Lead generation"],
+    image: "/images/keyboard.jpeg",
+    description: "Landing page strategiche progettate per obiettivi specifici. Design contemporaneo, copy persuasivo e test continui per massimizzare le performance di conversione.",
+    idealFor: "Campagne ads, lanci prodotto, lead generation, webinar, SaaS trials.",
+  },
+  {
+    number: 4,
+    title: "Siti con funzionalità avanzate",
+    tags: ["Database custom", "Filtri avanzati", "Area riservata", "Automazioni"],
+    image: "/images/Close-Up-Knitwear-Duo.jpeg",
+    description: "Soluzioni personalizzate per esigenze complesse. Sviluppo con campi custom, logiche avanzate e integrazioni su misura per gestire processi specifici del settore.",
+    idealFor: "Tour operator, agenzie immobiliari, concessionarie, marketplace B2B, piattaforme verticali",
+    small: true,
+  },
+  {
+    number: 5,
+    title: "Applicativi & Gestionali",
+    tags: ["Dashboard admin", "Multi-utente", "Integrazioni API", "Workflow"],
+    image: "/images/Close-Up-Knitwear-Duo.jpeg",
+    description: "Applicativi web e dashboard gestionali per automatizzare processi aziendali. Interfacce intuitive, logiche complesse e integrazioni con sistemi esistenti.",
+    idealFor: "SaaS B2B, Web3 projects, aziende con processi complessi, gestione multi-sede",
+    small: true,
+  },
+  {
+    number: 6,
+    title: "Consulenza strategica",
+    tags: ["Analisi mercato", "Strategia digitale", "Posizionamento", "Roadmap"],
+    image: "/images/Close-Up-Knitwear-Duo.jpeg",
+    description: "Sessioni strategiche per definire obiettivi, analizzare il mercato e progettare la presenza digitale. Approccio business-first per decisioni informate prima dello sviluppo.",
+    idealFor: "Startup in fase di lancio, rebranding, pivot di business, nuovi mercati",
+    small: true,
+  },
+];
+---
+
+<section class="services-section pt-10 pb-10">
+  <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <!-- Header -->
+    <div class="mb-10 lg:hidden">
+      <h2 class="services-heading text-white">Servizi</h2>
+    </div>
+
+    <!-- Services: heading sticky + cards -->
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-[0.3fr_1fr]">
+      <!-- Sticky heading -->
+      <div class="hidden lg:block">
+        <div class="sticky top-[10vh]">
+          <h2 class="services-heading-side text-white">Servizi</h2>
+        </div>
+      </div>
+
+      <!-- Cards column -->
+      <div class="flex flex-col">
+      {services.map((service) => (
+        <div
+          class:list={[
+            "service-item sticky top-[10vh] flex flex-col gap-6 bg-black pb-8",
+          ]}
+          style={`z-index: ${service.number};`}
+        >
+          <!-- Dotted separator -->
+          <div class="w-full border-t border-dotted border-[#4d4d4d]"></div>
+
+          <!-- Grid 1fr 1fr -->
+          <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-4">
+            <!-- Left: number + title + tags -->
+            <div class="flex flex-col gap-8">
+              <div class="flex items-center gap-4">
+                <div
+                  class="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-medium text-[#ddd]"
+                  style="background-image: linear-gradient(135deg, #1B4088, #A51B80 51%, #DA5713);"
+                >
+                  {service.number}
+                </div>
+                <span class="text-[1.75rem] font-semibold text-[#e5e3dc]">{service.title}</span>
+              </div>
+              <div class="flex max-w-[300px] flex-wrap gap-2">
+                {service.tags.map((tag) => (
+                  <span class="rounded-[3rem] bg-[#292929] px-3 py-2 text-sm font-medium text-[#b6b6b6]">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Right: image + text + button -->
+            <div>
+              <div class="mb-4 aspect-[16/10] max-h-[200px] overflow-clip rounded-xl">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div class="max-w-[36rem]">
+                <p class="text-sm leading-[170%] text-white/40">
+                  {service.description}
+                </p>
+                <p class="mt-4 text-sm text-white/40">
+                  <strong class="text-white/60">Ideale per</strong>: {service.idealFor}
+                </p>
+                <a
+                  href="/portfolio"
+                  class="btn-gradient group mt-5 inline-block rounded-full text-sm font-semibold text-white shadow-[0_16px_20px_rgba(0,0,0,0.2)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(165,27,128,0.3)]"
+                  style="background-image: linear-gradient(135deg, #1B4088, #A51B80 55%, #DA5713);"
+                >
+                  <div class="relative overflow-hidden rounded-full px-6 py-3 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] transition-shadow duration-300 group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]">
+                    <span class="relative z-[5] block overflow-hidden tracking-[-0.03em]">
+                      <span class="flex items-center gap-2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                        Scopri di più
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </span>
+                      <span class="absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
+                        Scopri di più
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </span>
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 1023px) {
+    .service-item {
+      position: relative !important;
+      top: auto !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+    if (!document.querySelector(".services-section")) return;
+
+    gsap.from(".services-heading", {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".services-section",
+        start: "top 75%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    gsap.utils.toArray<HTMLElement>(".service-item").forEach((item) => {
+      gsap.from(item, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+  });
+</script>

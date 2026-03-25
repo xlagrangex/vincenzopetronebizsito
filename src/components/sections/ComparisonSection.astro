@@ -1,0 +1,51 @@
+---
+import ComparisonTable from "../react/ComparisonTable.tsx";
+---
+
+<section class="comparison-section pt-10 pb-10">
+  <div class="mx-auto w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <!-- Header -->
+    <div class="mb-4">
+      <div class="flex items-center gap-3">
+        <div class="h-px w-8 bg-white/30"></div>
+        <span class="text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-white/40">BizStudio vs Concorrenza</span>
+      </div>
+    </div>
+    <div class="mb-12">
+      <h3 class="comparison-heading !text-4xl font-semibold !leading-[110%] tracking-[-0.05em] text-white md:!text-5xl lg:!text-[3.5rem]">
+        Perché sceglierci
+      </h3>
+    </div>
+
+    <!-- Table -->
+    <ComparisonTable client:visible />
+  </div>
+
+  <!-- Line separator -->
+  <div class="mx-auto mt-20 w-full max-w-[1440px] px-4 md:px-8 lg:px-12">
+    <div class="h-px w-full bg-white/10"></div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("astro:page-load", () => {
+    if (!document.querySelector(".comparison-section")) return;
+
+    gsap.from(".comparison-heading", {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".comparison-section",
+        start: "top 70%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
+</script>

@@ -1,0 +1,57 @@
+---
+// Logo Ipsum SVGs - loghi placeholder standard
+const logos = [
+  // Logo 1
+  `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30" fill="currentColor"><rect x="0" y="8" width="14" height="14" rx="3"/><rect x="18" y="4" width="6" height="22" rx="2"/><text x="32" y="22" font-family="Inter,sans-serif" font-size="16" font-weight="600" letter-spacing="-0.5">Acme</text></svg>`,
+  // Logo 2
+  `<svg xmlns="http://www.w3.org/2000/svg" width="130" height="30" viewBox="0 0 130 30" fill="currentColor"><circle cx="12" cy="15" r="10" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="12" cy="15" r="4"/><text x="28" y="21" font-family="Inter,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.5">Quantum</text></svg>`,
+  // Logo 3
+  `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="30" viewBox="0 0 110 30" fill="currentColor"><polygon points="12,2 22,26 2,26"/><text x="28" y="22" font-family="Inter,sans-serif" font-size="16" font-weight="600" letter-spacing="-0.5">Apex</text></svg>`,
+  // Logo 4
+  `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30" fill="currentColor"><rect x="0" y="5" width="20" height="20" rx="10" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="7" y1="15" x2="13" y2="15" stroke="currentColor" stroke-width="2.5"/><text x="26" y="22" font-family="Inter,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.5">Pulse</text></svg>`,
+  // Logo 5
+  `<svg xmlns="http://www.w3.org/2000/svg" width="130" height="30" viewBox="0 0 130 30" fill="currentColor"><path d="M2 25 L12 5 L22 25" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="28" y="22" font-family="Inter,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.5">Vertex</text></svg>`,
+  // Logo 6
+  `<svg xmlns="http://www.w3.org/2000/svg" width="130" height="30" viewBox="0 0 130 30" fill="currentColor"><rect x="0" y="6" width="9" height="18" rx="2"/><rect x="12" y="10" width="9" height="14" rx="2"/><text x="28" y="22" font-family="Inter,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.5">Nuvola</text></svg>`,
+  // Logo 7
+  `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30" fill="currentColor"><circle cx="8" cy="15" r="7" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="18" cy="15" r="7" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="30" y="22" font-family="Inter,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.5">Helix</text></svg>`,
+  // Logo 8
+  `<svg xmlns="http://www.w3.org/2000/svg" width="110" height="30" viewBox="0 0 110 30" fill="currentColor"><rect x="0" y="5" width="20" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="10" cy="15" r="4"/><text x="26" y="22" font-family="Inter,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.5">Orion</text></svg>`,
+];
+---
+
+<section class="relative py-10 overflow-hidden marquee-section">
+  <!-- Fade laterale sinistro (trasparente, solo blur) -->
+  <div class="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 md:w-40" style="mask-image: linear-gradient(to right, black, transparent); -webkit-mask-image: linear-gradient(to right, black, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+  <!-- Fade laterale destro -->
+  <div class="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 md:w-40" style="mask-image: linear-gradient(to left, black, transparent); -webkit-mask-image: linear-gradient(to left, black, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+
+  <!-- Marquee track -->
+  <div class="marquee-track flex w-max items-center gap-20">
+    {logos.map((logo) => (
+      <div class="flex-shrink-0 text-white/20" set:html={logo} />
+    ))}
+    {logos.map((logo) => (
+      <div class="flex-shrink-0 text-white/20" aria-hidden="true" set:html={logo} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+</style>

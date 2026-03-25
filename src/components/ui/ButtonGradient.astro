@@ -1,0 +1,99 @@
+---
+interface Props {
+  href: string;
+  text: string;
+  variant?: "dark" | "light";
+}
+
+const { href, text, variant = "dark" } = Astro.props;
+
+const isLight = variant === "light";
+---
+
+<a
+  href={href}
+  class:list={[
+    "btn-gradient group relative inline-block rounded-full text-center font-medium",
+    "shadow-[0_16px_20px_rgba(0,0,0,0.4)]",
+    "transition-all duration-300 ease-out",
+    "hover:shadow-[0_20px_40px_rgba(165,27,128,0.3)]",
+    "active:shadow-[0_4px_4px_rgba(0,0,0,0.3)]",
+    isLight
+      ? "bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] saturate-[1.15]"
+      : "",
+  ]}
+>
+  <div
+    class="relative z-10 overflow-hidden rounded-full px-6 py-3 transition-shadow duration-300 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]"
+  >
+    <!-- Gradient ball overlay -->
+    <div class="pointer-events-none absolute inset-0 z-[1] rounded-full">
+      <div class="btn-ball btn-ball-1"></div>
+      <div class="btn-ball btn-ball-2"></div>
+    </div>
+    <span class="btn-text relative z-[5] block overflow-hidden text-[1.125rem] font-semibold tracking-[-0.03em] text-white">
+      <span class="btn-text-1 flex items-center gap-2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">{text}<slot /></span>
+      <span class="btn-text-2 absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">{text}<slot /></span>
+    </span>
+  </div>
+  <!-- Glow effect -->
+  <div class="btn-glow pointer-events-none absolute inset-0 z-0 rounded-full blur-md transition-opacity duration-300">
+    <div class="btn-ball btn-ball-1"></div>
+    <div class="btn-ball btn-ball-2"></div>
+  </div>
+</a>
+
+<style>
+  .btn-ball {
+    position: absolute;
+    border-radius: 50%;
+    width: 50%;
+    height: 150%;
+    filter: blur(20px);
+    bottom: -25%;
+    opacity: 0.4;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+
+  .btn-ball-1 {
+    background: linear-gradient(90deg, #1B4088, #A51B80);
+    left: -5%;
+    animation: drift-1 5s ease-in-out infinite;
+  }
+
+  .btn-ball-2 {
+    background: linear-gradient(78deg, #A51B80, #DA5713);
+    left: 50%;
+    animation: drift-2 5s ease-in-out infinite;
+  }
+
+  /* Hover: balls become much more visible */
+  .btn-gradient:hover .btn-ball {
+    opacity: 0.7;
+    filter: blur(15px);
+  }
+
+  .btn-gradient:hover .btn-ball-1,
+  .btn-gradient:hover .btn-ball-2 {
+    animation-duration: 2s;
+  }
+
+  /* Glow intensifies on hover */
+  .btn-glow {
+    opacity: 0.3;
+  }
+
+  .btn-gradient:hover .btn-glow {
+    opacity: 0.5;
+  }
+
+  @keyframes drift-1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20%, -15%); }
+  }
+
+  @keyframes drift-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20%, -10%); }
+  }
+</style>

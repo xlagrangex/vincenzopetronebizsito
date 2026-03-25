@@ -1,0 +1,230 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --font-sans: "Inter Variable", Arial, sans-serif;
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-accent: #3b82f6;
+  --color-muted: #6b7280;
+  --color-surface: #111111;
+}
+
+/* Base */
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Smooth scroll via Lenis - disabilita il comportamento nativo */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Heading globali */
+h1 {
+  font-size: 2.75rem;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 90%;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 95%;
+}
+
+h3 {
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 100%;
+}
+
+h4 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 110%;
+}
+
+@media (min-width: 768px) {
+  h1 { font-size: 5.5rem; }
+  h2 { font-size: 3.85rem; }
+  h3 { font-size: 2.75rem; }
+  h4 { font-size: 1.375rem; }
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gradient text animato in loop */
+.gradient-text-animated {
+  background: linear-gradient(90deg, var(--color-accent), #a855f7, #ec4899, var(--color-accent));
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-loop 4s linear infinite;
+}
+
+@keyframes gradient-loop {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Glow circles - sfumature colorate sullo sfondo */
+.glow-circle {
+  position: fixed;
+  top: -5%;
+  right: 4%;
+  width: calc(10rem + 15vw);
+  height: calc(10rem + 25vw);
+  border-radius: 999rem;
+  background-image: linear-gradient(#1B4088, #A51B80 55%, #DA5713);
+  opacity: 0.3;
+  filter: blur(7rem);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+.glow-circle--2 {
+  top: auto;
+  right: auto;
+  bottom: -26%;
+  left: -5%;
+}
+
+/* Menu open - blur tutto il sito dietro il pannello */
+#site-content {
+  transition: filter 0.5s ease;
+}
+
+body.menu-open #site-content {
+  filter: blur(15px);
+}
+
+/* Expand button balls */
+.expand-ball {
+  position: absolute;
+  border-radius: 50%;
+  width: 50%;
+  height: 150%;
+  filter: blur(20px);
+  bottom: -25%;
+  opacity: 0.4;
+  mix-blend-mode: soft-light;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.expand-ball-1 {
+  background: linear-gradient(90deg, #1B4088, #A51B80);
+  left: -5%;
+  animation: drift-1 5s ease-in-out infinite;
+}
+
+.expand-ball-2 {
+  background: linear-gradient(78deg, #A51B80, #DA5713);
+  left: 50%;
+  animation: drift-2 5s ease-in-out infinite;
+}
+
+.btn-gradient:hover .expand-ball {
+  opacity: 0.7;
+  filter: blur(15px);
+}
+
+.btn-gradient:hover .expand-ball-1,
+.btn-gradient:hover .expand-ball-2 {
+  animation-duration: 2s;
+}
+
+@keyframes drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20%, -15%); }
+}
+
+@keyframes drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20%, -10%); }
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+/* ═══════════════════════════════════════════
+   ETHEREAL BLUR — Page Transition
+   (Astro View Transitions / ClientRouter)
+   ═══════════════════════════════════════════ */
+
+@keyframes ethereal-blur-out {
+  0% {
+    filter: blur(0px) brightness(1) saturate(1);
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    filter: blur(50px) brightness(0.4) saturate(0.3);
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes ethereal-blur-in {
+  0% {
+    filter: blur(50px) brightness(0.4) saturate(0.3);
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    filter: blur(0px) brightness(1) saturate(1);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+::view-transition-old(root) {
+  animation: ethereal-blur-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: ethereal-blur-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.2s;
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.9s;
+}
+
+::view-transition-image-pair(root) {
+  isolation: auto;
+}

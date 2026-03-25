@@ -1,0 +1,820 @@
+---
+import LayoutMinimal from "../layouts/LayoutMinimal.astro";
+import PortfolioDrawerIsland from "../components/react/PortfolioDrawerIsland.tsx";
+---
+
+<LayoutMinimal title="Parti da qui - BizStudio" description="Raccontaci il tuo progetto per una proposta gratuita su misura">
+
+  <div class="glow-circle"></div>
+  <div class="glow-circle glow-circle--2"></div>
+  <PortfolioDrawerIsland client:load />
+
+  <!-- Top bar: solo logo -->
+  <header class="top-bar fixed top-0 left-0 right-0 z-50 flex items-center px-5 md:px-8" style="height:60px;">
+    <a href="/" class="flex-shrink-0" aria-label="Torna alla homepage">
+      <img src="/images/Group-15.png" alt="BizStudio" class="w-20 opacity-70 hover:opacity-100 transition-opacity" />
+    </a>
+  </header>
+  <div class="fixed top-0 right-5 md:right-8 z-50 flex items-center" style="height:60px;">
+    <a href="/start-here" class="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white hover:border-white/25 hover:bg-white/[0.08] transition-all duration-300">EN</a>
+  </div>
+
+  <main class="form-page relative flex flex-col justify-center items-center min-h-screen pt-20 pb-10 md:pt-24 md:pb-12 px-5 md:px-8">
+    <div class="w-full max-w-2xl mx-auto">
+
+      <!-- Progress bar (hidden on step 1, shown from step 2) -->
+      <div class="form-progress mb-5" style="display:none;">
+        <div class="flex items-center justify-between mb-2">
+          <span class="step-label text-[0.7rem] font-semibold text-white/50">Step <span class="step-num-display">1</span> di 5</span>
+          <span class="step-motivation text-[0.7rem] font-medium text-white/40"></span>
+        </div>
+        <div class="relative h-[5px] w-full overflow-hidden rounded-full bg-white/10">
+          <div class="progress-fill absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#1B4088,#A51B80_60%,#DA5713)]" style="width:20%; transition: width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
+        </div>
+      </div>
+
+      <!-- ═══ STEPS ═══ -->
+      <div class="steps-wrapper relative">
+
+        <!-- STEP 1: Nome (clean, minimal, focused) -->
+        <div class="step-content" data-step="1">
+          <div class="text-center mb-8">
+            <p class="text-base text-white/40 mb-4">2 minuti, zero impegno, 100% su misura per te.</p>
+            <h1 class="!text-[clamp(1.8rem,5vw,2.8rem)] !leading-[125%] font-semibold tracking-[-0.03em] text-white">
+              Ogni grande progetto inizia<br class="hidden sm:block" /> con una conversazione.
+            </h1>
+          </div>
+          <h2 class="!text-[clamp(1.4rem,3.5vw,1.8rem)] !leading-[130%] font-medium tracking-[-0.02em] text-white/70 text-center mb-6">
+            Iniziamo dalle presentazioni. Come ti chiami?
+          </h2>
+          <div class="max-w-sm mx-auto">
+            <input type="text" id="nome-input" class="form-input text-center text-lg" placeholder="Il tuo nome" autocomplete="given-name" autofocus />
+          </div>
+        </div>
+
+        <!-- GREETING (transient, shown between step 1 and 2) -->
+        <div class="step-content greeting-screen" data-step="greeting" style="display:none;">
+          <div class="greeting-stage text-center flex items-center justify-center" style="min-height:200px;">
+            <div class="greeting-slide greeting-slide-1 opacity-0">
+              <h2 class="!text-[clamp(1.8rem,5vw,2.8rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
+                Ciao <span class="greeting-name"></span>, piacere nostro! <span class="inline-block" style="font-size:1.2em;">👋</span>
+              </h2>
+            </div>
+            <div class="greeting-slide greeting-slide-2 opacity-0">
+              <div class="max-w-2xl mx-auto text-center">
+                <h2 class="greeting-2a !text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
+                  Noi siamo <span class="gradient-text-animated font-bold">BizStudio</span>...
+                </h2>
+                <p class="greeting-2b !text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[125%] font-semibold tracking-[-0.04em] text-white mt-5 opacity-0">
+                  ...e se hai un <span class="word-warm-gradient">sogno</span> per la tua attività, noi vogliamo aiutarti a realizzarlo.
+                </p>
+              </div>
+            </div>
+            <div class="greeting-slide greeting-slide-3 opacity-0">
+              <h2 class="!text-[clamp(1.6rem,4.5vw,2.4rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
+                Sei pronto?
+              </h2>
+            </div>
+            <div class="greeting-slide greeting-slide-4 opacity-0">
+              <h2 class="greeting-finale !text-[clamp(1.8rem,5vw,2.8rem)] !leading-[115%] font-semibold tracking-[-0.04em] text-white">
+                Iniziamo, <span class="greeting-name"></span>.
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Cosa stai immaginando + Hai già un sito -->
+        <div class="step-content" data-step="2" style="display:none;">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-6">
+            <span class="user-name"></span>, raccontaci:<br />cosa stai immaginando?
+          </h2>
+          <div class="options-grid grid grid-cols-1 sm:grid-cols-2 gap-3" role="radiogroup" aria-label="Tipo di progetto">
+            <button class="option-card" data-value="vetrina" role="radio" aria-checked="false" tabindex="0">
+              <div class="option-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
+              <span class="option-title">Un sito che parla per me</span>
+              <span class="option-desc">Vetrina aziendale / professionale</span>
+            </button>
+            <button class="option-card" data-value="ecommerce" role="radio" aria-checked="false" tabindex="-1">
+              <div class="option-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+              <span class="option-title">Un negozio che vende anche mentre dormo</span>
+              <span class="option-desc">eCommerce</span>
+            </button>
+            <button class="option-card" data-value="landing" role="radio" aria-checked="false" tabindex="-1">
+              <div class="option-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 9 5 12 1.8-5.2L21 14Z"/><path d="M7.2 2.2 8 5.1"/><path d="m5.1 8-2.9-.8"/><path d="M14 4.1 12 6"/><path d="m6 12-1.9 2"/></svg></div>
+              <span class="option-title">Una pagina che convince al primo scroll</span>
+              <span class="option-desc">Landing page</span>
+            </button>
+            <button class="option-card" data-value="custom" role="radio" aria-checked="false" tabindex="-1">
+              <div class="option-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg></div>
+              <span class="option-title">Qualcosa che ancora non esiste</span>
+              <span class="option-desc">Progetto custom</span>
+            </button>
+          </div>
+
+          <!-- Follow-up: Hai già un sito? (appare dopo selezione) -->
+          <div class="followup mt-6" style="display:none;">
+            <p class="text-sm text-white/60 text-center mb-3"><span class="user-name"></span>, parti da zero o hai già qualcosa online?</p>
+            <div class="flex flex-wrap justify-center gap-2">
+              <button class="chip" data-sito="zero">Parto da zero</button>
+              <button class="chip" data-sito="rifare">Ho un sito ma è ora di cambiare</button>
+              <button class="chip" data-sito="migliorare">Ho un sito e voglio potenziarlo</button>
+            </div>
+            <!-- Campo link condizionale -->
+            <div class="link-field mt-4" style="display:none;">
+              <label class="text-xs text-white/50 mb-1.5 block">Inserisci il link del tuo sito attuale</label>
+              <div class="flex items-center gap-0 rounded-[0.875rem] border border-white/15 bg-white/[0.05] overflow-hidden">
+                <span class="pl-3 pr-1 text-sm text-white/30 select-none flex-shrink-0">https://</span>
+                <input type="text" id="sito-attuale" class="flex-1 py-3 pr-3 bg-transparent text-white text-sm outline-none placeholder:text-white/25" placeholder="www.iltuosito.it" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: La tua azienda -->
+        <div class="step-content" data-step="3" style="display:none;">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-6">
+            <span class="user-name"></span>, parlaci della tua attività.
+          </h2>
+          <div class="max-w-md mx-auto flex flex-col gap-4 mb-6">
+            <input type="text" id="azienda-input" class="form-input" placeholder="Nome dell'azienda o del progetto" />
+            <input type="text" id="settore-input" class="form-input" placeholder="In che settore lavori? (es. ristorazione, moda, tech...)" />
+          </div>
+          <p class="text-sm text-white/50 text-center mb-3">A che punto è la tua attività?</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto" role="radiogroup" aria-label="Maturità azienda">
+            <button class="option-card option-card-compact" data-value="brand-nuovo" role="radio" aria-checked="false" tabindex="0">
+              <span class="option-title">Un brand che deve ancora nascere</span>
+              <span class="option-desc">Idea o progetto da costruire</span>
+            </button>
+            <button class="option-card option-card-compact" data-value="attivita-partenza" role="radio" aria-checked="false" tabindex="-1">
+              <span class="option-title">Un'attività in partenza</span>
+              <span class="option-desc">Primi passi, tutto da impostare</span>
+            </button>
+            <button class="option-card option-card-compact" data-value="attivita-esistente" role="radio" aria-checked="false" tabindex="-1">
+              <span class="option-title">Un'attività già esistente</span>
+              <span class="option-desc">Operativa, vuole crescere online</span>
+            </button>
+            <button class="option-card option-card-compact" data-value="attivita-consolidata" role="radio" aria-checked="false" tabindex="-1">
+              <span class="option-title">Un'attività consolidata</span>
+              <span class="option-desc">Volumi importanti, vuole il salto</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Budget -->
+        <div class="step-content" data-step="4" style="display:none;">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-3">
+            <span class="user-name"></span>, ora la domanda che tutti odiano.
+          </h2>
+          <p class="text-sm text-white/40 text-center mb-2 max-w-md mx-auto leading-relaxed">
+            Ma te la facciamo lo stesso perché ci piace essere diretti.
+          </p>
+          <p class="text-xs text-white/30 text-center mb-5 max-w-md mx-auto leading-relaxed">
+            Un'idea di budget ci aiuta a non farti perdere tempo con proposte fuori target. Non è un contratto — è un punto di partenza.
+          </p>
+
+          <!-- Toggle espandibile (senza box) -->
+          <div class="max-w-md mx-auto mb-6 text-center">
+            <button class="budget-toggle inline-flex items-center gap-1.5 cursor-pointer transition-colors duration-300 bg-transparent border-none outline-none" type="button">
+              <span class="text-xs text-white/40 underline underline-offset-2 decoration-white/20 hover:decoration-white/40">Perché ti chiediamo il budget?</span>
+              <svg class="budget-toggle-arrow w-3.5 h-3.5 text-white/30 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="budget-toggle-content overflow-hidden" style="max-height:0; opacity:0; transition: max-height 0.5s ease, opacity 0.4s ease;">
+              <div class="pt-4 pb-1 text-xs text-white/35 leading-[175%] space-y-3 max-w-sm mx-auto text-left">
+                <p>Lo sappiamo, parlare di soldi non è mai semplice. Ma crediamo che la trasparenza sia la base di ogni buon rapporto di lavoro.</p>
+                <p>Il motivo principale è semplice: <strong class="text-white/50">evitare di perdere tempo — sia il tuo che il nostro.</strong> Senza un'indicazione di budget, rischiamo di fare due o tre call conoscitive, preparare una proposta dettagliata, e poi scoprire che non siamo allineati sulle cifre. È frustrante per entrambi.</p>
+                <p>Con un'idea di budget, anche molto approssimativa, possiamo subito capire quale soluzione proporti e come strutturare l'offerta in modo che abbia senso per te.</p>
+                <p>E tranquillo: <strong class="text-white/50">il budget non è una cifra scolpita nella pietra.</strong> Tanti dei nostri clienti cambiano idea dopo aver visto cosa possiamo offrire — a volte investono di più perché vedono il valore, a volte troviamo soluzioni più snelle che costano meno. È un punto di partenza, non un vincolo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="max-w-sm mx-auto">
+            <input type="text" id="budget-input" class="form-input text-center text-lg" placeholder="" />
+            <p class="text-[0.65rem] text-white/25 text-center mt-2">Questo numero resta tra noi.</p>
+          </div>
+        </div>
+
+        <!-- STEP 5: Contatti finali -->
+        <div class="step-content" data-step="5" style="display:none;">
+          <h2 class="!text-[clamp(1.7rem,4.5vw,2.4rem)] !leading-[120%] font-semibold tracking-[-0.03em] text-white text-center mb-3">
+            Ci siamo, <span class="user-name"></span> — e poi ci mettiamo al lavoro per te.
+          </h2>
+          <p class="text-sm text-white/40 text-center mb-6">Lasciaci i tuoi contatti per ricontattarti.</p>
+          <div class="max-w-sm mx-auto flex flex-col gap-3">
+            <input type="text" id="cognome-input" class="form-input" placeholder="Cognome *" autocomplete="family-name" />
+            <input type="email" id="email-input" class="form-input" placeholder="Email *" autocomplete="email" />
+            <input type="tel" id="telefono-input" class="form-input" placeholder="Telefono *" autocomplete="tel" />
+            <label class="flex items-start gap-3 cursor-pointer group mt-1">
+              <div class="relative mt-0.5 flex-shrink-0">
+                <input type="checkbox" id="privacy-check" class="peer sr-only" />
+                <div class="h-5 w-5 rounded-md border border-white/20 bg-white/[0.04] transition-all duration-200 peer-checked:border-[#A51B80]/50 peer-checked:bg-[#A51B80]/15 group-hover:border-white/30"></div>
+                <svg class="absolute top-0.5 left-0.5 h-4 w-4 text-white opacity-0 transition-opacity duration-200 peer-checked:opacity-100 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span class="text-xs text-white/50 leading-relaxed">Acconsento al trattamento dei dati ai sensi del <a href="/legal/privacy-policy" class="underline underline-offset-2 text-white/60 hover:text-white/80 transition-colors">GDPR</a></span>
+            </label>
+          </div>
+          <p class="text-xs text-white/25 text-center mt-5">Ti rispondiamo entro 24 ore — e se non lo facciamo, il caffè lo offriamo noi.</p>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="step-content" data-step="success" style="display:none;">
+          <div class="flex flex-col items-center text-center py-8">
+            <div class="success-icon relative mb-6">
+              <div class="absolute inset-0 rounded-full bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] opacity-25 blur-2xl scale-[2]"></div>
+              <div class="relative flex h-20 w-20 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <h2 class="success-title !text-[clamp(1.8rem,5vw,2.8rem)] !leading-[110%] font-semibold tracking-[-0.04em] text-white mb-3">
+              <span class="user-name"></span>, la tua richiesta è nelle mani giuste.
+            </h2>
+            <p class="success-desc text-sm text-white/50 max-w-sm leading-relaxed mb-2">Ti scriviamo a <span class="user-email font-medium text-white/70"></span> entro 24 ore.</p>
+            <p class="text-sm text-white/40 mb-8">Nel frattempo, guarda cosa abbiamo fatto per chi — come te — si è fidato di noi.</p>
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+              <a href="https://calendly.com/bizstudio-it/30min" target="_blank" rel="noopener noreferrer" class="btn-gradient group relative inline-block rounded-full font-semibold text-white shadow-[0_8px_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_12px_30px_rgba(165,27,128,0.3)] bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] saturate-[1.15]"><div class="relative overflow-hidden rounded-full px-7 py-3 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]"><span class="relative z-[5] block text-sm font-semibold tracking-[-0.02em]">Prenota una chiamata</span></div></a>
+              <button class="open-portfolio-bottom text-sm font-medium text-white/40 hover:text-white/70 transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-white/40 cursor-pointer bg-transparent border-none">Vedi i nostri lavori</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation -->
+      <div class="form-nav flex items-center justify-between mt-8 max-w-sm mx-auto">
+        <button class="btn-back group flex items-center gap-2 text-sm font-medium text-white/40 hover:text-white/70 transition-all duration-300 cursor-pointer invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:-translate-x-1"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Indietro</span>
+        </button>
+        <button class="btn-next btn-gradient group relative inline-block rounded-full text-center font-medium shadow-[0_16px_20px_rgba(0,0,0,0.4)] transition-all duration-300 ease-out hover:shadow-[0_20px_40px_rgba(165,27,128,0.3)] active:shadow-[0_4px_4px_rgba(0,0,0,0.3)] cursor-pointer bg-[linear-gradient(135deg,#1B4088,#A51B80_50%,#DA5713)] saturate-[1.15]">
+          <div class="relative z-10 overflow-hidden rounded-full px-5 py-2.5 shadow-[inset_0_0_7px_rgba(255,255,255,0.28)] transition-shadow duration-300 group-hover:shadow-[inset_0_0_14px_rgba(255,255,255,0.5)]">
+            <div class="pointer-events-none absolute inset-0 z-[1] rounded-full"><div class="expand-ball expand-ball-1"></div><div class="expand-ball expand-ball-2"></div></div>
+            <span class="relative z-[5] block overflow-hidden text-sm font-semibold tracking-[-0.03em] text-white">
+              <span class="btn-text-wrap flex items-center gap-2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full"><span class="btn-text">Continua</span><svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><svg class="btn-spinner hidden animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg></span>
+              <span class="btn-text-clone absolute inset-0 flex items-center justify-center gap-2 translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"><span>Continua</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </span>
+          </div>
+          <div class="btn-glow pointer-events-none absolute inset-0 z-0 rounded-full blur-md transition-opacity duration-300 opacity-30 group-hover:opacity-50"><div class="expand-ball expand-ball-1"></div><div class="expand-ball expand-ball-2"></div></div>
+        </button>
+      </div>
+
+      <!-- Social proof + Vedi lavori -->
+      <div class="social-proof mt-8 flex flex-col items-center gap-3">
+        <div class="flex items-center justify-center gap-3">
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-xl font-bold tracking-[-0.03em] gradient-text-animated">+50</span>
+            <span class="text-xs text-white/45">aziende ci hanno scelto</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="text-amber-400 text-xs">★★★★★</span>
+            <span class="text-[0.65rem] text-white/45 font-semibold">4.9/5</span>
+          </div>
+        </div>
+        <button class="open-portfolio-bottom group relative inline-block rounded-full text-center font-medium cursor-pointer border border-white/15 bg-white/[0.04] backdrop-blur-sm transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08] hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]">
+          <div class="relative overflow-hidden rounded-full px-5 py-2">
+            <span class="relative block overflow-hidden text-xs font-semibold tracking-[-0.02em] text-white/60 group-hover:text-white transition-colors duration-300">
+              <span class="flex items-center gap-1.5 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                Vedi i nostri lavori
+              </span>
+              <span class="absolute inset-0 flex items-center justify-center gap-1.5 translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+                Vedi i nostri lavori
+              </span>
+            </span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </main>
+</LayoutMinimal>
+
+<script>
+  import { gsap } from "gsap";
+  let autoAdvanceTimer: ReturnType<typeof setTimeout> | null = null;
+  let typeTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  document.addEventListener("astro:before-swap", () => {
+    if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+    if (typeTimeout) clearTimeout(typeTimeout);
+    gsap.killTweensOf("*");
+  });
+
+  document.addEventListener("astro:page-load", () => {
+    if (!document.querySelector(".form-page")) return;
+
+    let currentStep = 1;
+    let isAnimating = false;
+    let userName = "";
+    const formData: Record<string, string> = {};
+
+    // DOM
+    const btnBack = document.querySelector(".btn-back") as HTMLElement;
+    const btnNext = document.querySelector(".btn-next") as HTMLElement;
+    const btnText = document.querySelector(".btn-text") as HTMLElement;
+    const btnTextClone = document.querySelector(".btn-text-clone span") as HTMLElement;
+    const btnArrow = document.querySelector(".btn-arrow") as HTMLElement;
+    const btnSpinner = document.querySelector(".btn-spinner") as HTMLElement;
+    const formNav = document.querySelector(".form-nav") as HTMLElement;
+    const progressFill = document.querySelector(".progress-fill") as HTMLElement;
+    const stepNumDisplay = document.querySelector(".step-num-display") as HTMLElement;
+    const stepMotivation = document.querySelector(".step-motivation") as HTMLElement;
+    const formProgress = document.querySelector(".form-progress") as HTMLElement;
+    const topBar = document.querySelector(".top-bar") as HTMLElement;
+
+    // Entrance
+    gsap.fromTo(".top-bar", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", delay: 0.1 });
+    // Progress bar hidden on step 1, entrance animations for step 1 content
+    gsap.fromTo('[data-step="1"]', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", delay: 0.45 });
+    gsap.fromTo(".form-nav", { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out", delay: 0.55 });
+    gsap.fromTo(".social-proof", { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", delay: 0.7 });
+
+    // Focus name input
+    setTimeout(() => { (document.getElementById("nome-input") as HTMLInputElement)?.focus(); }, 800);
+
+    // ─── Button enabled/disabled state ───
+    function disableBtn() {
+      (btnNext as HTMLButtonElement).disabled = true;
+      btnNext.style.opacity = "0.35";
+      btnNext.style.pointerEvents = "none";
+    }
+    function enableBtn() {
+      (btnNext as HTMLButtonElement).disabled = false;
+      btnNext.style.opacity = "1";
+      btnNext.style.pointerEvents = "auto";
+    }
+
+    function checkStepValid(): boolean {
+      if (currentStep === 1) {
+        return !!(document.getElementById("nome-input") as HTMLInputElement)?.value.trim();
+      }
+      if (currentStep === 2) {
+        const cardSelected = !!document.querySelector('[data-step="2"] .option-card.selected');
+        const chipSelected = !!document.querySelector('.chip-active');
+        return cardSelected && chipSelected;
+      }
+      if (currentStep === 3) {
+        return true; // azienda fields are optional
+      }
+      if (currentStep === 4) {
+        return true; // budget is optional
+      }
+      if (currentStep === 5) {
+        const cognome = (document.getElementById("cognome-input") as HTMLInputElement)?.value.trim();
+        const email = (document.getElementById("email-input") as HTMLInputElement)?.value.trim();
+        const telefono = (document.getElementById("telefono-input") as HTMLInputElement)?.value.trim();
+        const privacy = (document.getElementById("privacy-check") as HTMLInputElement)?.checked;
+        return !!(cognome && email && email.includes("@") && telefono && privacy);
+      }
+      return true;
+    }
+
+    function updateBtnState() {
+      if (checkStepValid()) enableBtn(); else disableBtn();
+    }
+
+    // Start disabled
+    disableBtn();
+
+    // Listen for input changes to enable/disable
+    document.getElementById("nome-input")?.addEventListener("input", updateBtnState);
+    document.getElementById("cognome-input")?.addEventListener("input", updateBtnState);
+    document.getElementById("email-input")?.addEventListener("input", updateBtnState);
+    document.getElementById("telefono-input")?.addEventListener("input", updateBtnState);
+    document.getElementById("privacy-check")?.addEventListener("change", updateBtnState);
+    document.getElementById("budget-input")?.addEventListener("input", updateBtnState);
+    document.getElementById("azienda-input")?.addEventListener("input", updateBtnState);
+    document.getElementById("settore-input")?.addEventListener("input", updateBtnState);
+
+    // Portfolio drawer
+    document.querySelectorAll(".open-portfolio-bottom").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if ((window as any).__openPortfolioDrawer) (window as any).__openPortfolioDrawer();
+        else window.dispatchEvent(new CustomEvent("portfolio-drawer-open"));
+      });
+    });
+
+    // Update all .user-name spans
+    function updateUserName() {
+      document.querySelectorAll(".user-name").forEach((el) => { el.textContent = userName; });
+    }
+
+    // Navigate
+    function goToStep(step: number | "greeting" | "success", dir: "forward" | "backward" = "forward") {
+      if (isAnimating || step === currentStep) return;
+      isAnimating = true;
+      const curEl = document.querySelector(`[data-step="${currentStep}"]`) as HTMLElement;
+      const nxtEl = document.querySelector(`[data-step="${step}"]`) as HTMLElement;
+      if (!curEl || !nxtEl) { isAnimating = false; return; }
+
+      const xO = dir === "forward" ? -30 : 30;
+      const xI = dir === "forward" ? 30 : -30;
+
+      gsap.to(curEl, { opacity: 0, x: xO, duration: 0.2, ease: "power2.in", onComplete: () => {
+        curEl.style.display = "none"; curEl.style.transform = ""; curEl.style.opacity = "";
+        nxtEl.style.display = "block";
+        gsap.fromTo(nxtEl, { opacity: 0, x: xI }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" });
+
+        // Stagger cards
+        const cards = nxtEl.querySelectorAll(".option-card");
+        if (cards.length) gsap.fromTo(cards, { opacity: 0, y: 12, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.05, ease: "power3.out", delay: 0.05 });
+
+        isAnimating = false;
+      }});
+
+      // Update progress for numeric steps
+      if (typeof step === "number") {
+        const pct = step * 20;
+        progressFill.style.width = `${pct}%`;
+        stepNumDisplay.textContent = String(step);
+
+        const motivations: Record<number, string> = { 1: "", 2: "", 3: "Bene!", 4: "Ci siamo quasi!", 5: "Ultimo step!" };
+        gsap.to(stepMotivation, { opacity: 0, duration: 0.1, onComplete: () => {
+          stepMotivation.textContent = motivations[step] || "";
+          gsap.to(stepMotivation, { opacity: 1, duration: 0.2 });
+        }});
+
+        btnBack.style.visibility = step <= 1 ? "hidden" : "visible";
+        if (step === 5) { setBtnText("Invia la richiesta"); }
+        else { setBtnText("Continua"); }
+        currentStep = step;
+        setTimeout(updateBtnState, 50);
+      }
+
+      // Show progress bar from step 2 onwards, hide on step 1
+      if (typeof step === "number" && step >= 2 && formProgress.style.display === "none") {
+        formProgress.style.display = "";
+        gsap.fromTo(formProgress, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" });
+      }
+      if (step === 1 && formProgress.style.display !== "none") {
+        formProgress.style.display = "none";
+      }
+
+      // Success
+      if (step === "success") {
+        gsap.to(formNav, { opacity: 0, duration: 0.3, onComplete: () => { formNav.style.display = "none"; } });
+        gsap.to(".form-progress", { opacity: 0, duration: 0.3 });
+        gsap.to(topBar, { y: -60, opacity: 0, duration: 0.4, ease: "power3.inOut" });
+        gsap.to(".social-proof", { opacity: 0, duration: 0.3 });
+        // Fill email
+        const emailEl = document.querySelector(".user-email");
+        if (emailEl) emailEl.textContent = formData.email || "";
+        setTimeout(() => {
+          gsap.fromTo(".success-icon", { scale: 0, rotation: -180 }, { scale: 1, rotation: 0, duration: 0.6, ease: "elastic.out(1, 0.5)" });
+          gsap.fromTo(".success-title", { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out", delay: 0.15 });
+          gsap.fromTo(".success-desc", { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out", delay: 0.25 });
+        }, 300);
+      }
+
+      // Greeting is transient
+      if (step === "greeting") {
+        document.querySelector(".greeting-name")!.textContent = userName;
+        currentStep = "greeting" as any;
+      }
+    }
+
+    function setBtnText(text: string) {
+      if (btnText) btnText.textContent = text;
+      if (btnTextClone) btnTextClone.textContent = text;
+    }
+
+    // Step 2: option card click
+    document.querySelectorAll('[data-step="2"] .option-card').forEach((card) => {
+      card.addEventListener("click", () => {
+        if (isAnimating) return;
+        const stepEl = card.closest(".step-content") as HTMLElement;
+        stepEl.querySelectorAll(".option-card").forEach((c) => { c.classList.remove("selected"); c.setAttribute("aria-checked", "false"); });
+        card.classList.add("selected"); card.setAttribute("aria-checked", "true");
+        gsap.fromTo(card, { scale: 0.97 }, { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.5)" });
+        formData.tipo = (card as HTMLElement).dataset.value || "";
+        updateBtnState();
+
+        // Show follow-up
+        const followup = stepEl.querySelector(".followup") as HTMLElement;
+        if (followup && followup.style.display === "none") {
+          followup.style.display = "block";
+          gsap.fromTo(followup, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" });
+        }
+      });
+    });
+
+    // Step 2: chip selection
+    document.querySelectorAll(".chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach((c) => c.classList.remove("chip-active"));
+        chip.classList.add("chip-active");
+        formData.sitoAttuale = (chip as HTMLElement).dataset.sito || "";
+        updateBtnState();
+
+        // Show link field if has a site
+        const linkField = document.querySelector(".link-field") as HTMLElement;
+        if (formData.sitoAttuale !== "zero" && linkField) {
+          if (linkField.style.display === "none") {
+            linkField.style.display = "block";
+            gsap.fromTo(linkField, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" });
+          }
+        } else if (linkField) {
+          linkField.style.display = "none";
+        }
+
+      });
+    });
+
+    // Step 3: maturity card click
+    document.querySelectorAll('[data-step="3"] .option-card').forEach((card) => {
+      card.addEventListener("click", () => {
+        if (isAnimating) return;
+        const stepEl = card.closest(".step-content") as HTMLElement;
+        stepEl.querySelectorAll(".option-card").forEach((c) => { c.classList.remove("selected"); c.setAttribute("aria-checked", "false"); });
+        card.classList.add("selected"); card.setAttribute("aria-checked", "true");
+        gsap.fromTo(card, { scale: 0.97 }, { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.5)" });
+        updateBtnState();
+      });
+    });
+
+    // Keyboard on radiogroups
+    document.querySelectorAll('[role="radiogroup"]').forEach((g) => {
+      g.addEventListener("keydown", (e: Event) => {
+        const ev = e as KeyboardEvent; const cards = Array.from(g.querySelectorAll(".option-card")); const idx = cards.indexOf(document.activeElement as Element); if (idx === -1) return; let next = -1;
+        if (ev.key === "ArrowDown" || ev.key === "ArrowRight") { next = (idx + 1) % cards.length; ev.preventDefault(); }
+        else if (ev.key === "ArrowUp" || ev.key === "ArrowLeft") { next = (idx - 1 + cards.length) % cards.length; ev.preventDefault(); }
+        else if (ev.key === "Enter" || ev.key === " ") { (document.activeElement as HTMLElement).click(); ev.preventDefault(); return; }
+        if (next >= 0) { cards.forEach((c, i) => (c as HTMLElement).tabIndex = i === next ? 0 : -1); (cards[next] as HTMLElement).focus(); }
+      });
+    });
+
+    // Rotating placeholder for budget (typing effect)
+    const budgetPlaceholders = ["circa 2.000€", "tra 1.000 e 5.000€", "onestamente, non ne ho idea", "circa 3.000€", "devo ancora capire"];
+    let phIdx = 0;
+
+    // Easing: slow at start, faster in middle, slow at end
+    function typeDelay(charIdx: number, total: number): number {
+      const t = total > 1 ? charIdx / (total - 1) : 0; // 0 to 1
+      // Sine ease-in-out: slow → fast → slow
+      const ease = 0.5 - Math.cos(Math.PI * t) / 2;
+      return 50 + (1 - ease) * 100; // 50ms at fastest, 150ms at slowest
+    }
+
+    function typeText(input: HTMLInputElement, text: string, charIdx: number) {
+      if (input.value) return;
+      if (charIdx <= text.length) {
+        input.placeholder = text.substring(0, charIdx);
+        const delay = typeDelay(charIdx, text.length);
+        typeTimeout = setTimeout(() => typeText(input, text, charIdx + 1), delay);
+      } else {
+        typeTimeout = setTimeout(() => eraseText(input, text.length), 2500);
+      }
+    }
+
+    function eraseText(input: HTMLInputElement, charIdx: number) {
+      if (input.value) return;
+      if (charIdx >= 0) {
+        input.placeholder = budgetPlaceholders[phIdx].substring(0, charIdx);
+        typeTimeout = setTimeout(() => eraseText(input, charIdx - 1), 55);
+      } else {
+        phIdx = (phIdx + 1) % budgetPlaceholders.length;
+        typeTimeout = setTimeout(() => {
+          if (!input.value) typeText(input, budgetPlaceholders[phIdx], 0);
+        }, 400);
+      }
+    }
+
+    function startBudgetPlaceholder() {
+      const input = document.getElementById("budget-input") as HTMLInputElement;
+      if (!input) return;
+      typeText(input, budgetPlaceholders[0], 0);
+    }
+
+    // Budget toggle
+    const budgetToggle = document.querySelector(".budget-toggle");
+    const budgetContent = document.querySelector(".budget-toggle-content") as HTMLElement;
+    const budgetArrow = document.querySelector(".budget-toggle-arrow") as HTMLElement;
+    if (budgetToggle && budgetContent) {
+      budgetToggle.addEventListener("click", () => {
+        const isOpen = budgetContent.style.maxHeight && budgetContent.style.maxHeight !== "0px" && budgetContent.style.maxHeight !== "0";
+        if (isOpen) {
+          budgetContent.style.maxHeight = "0px";
+          budgetContent.style.opacity = "0";
+          budgetArrow?.classList.remove("rotate-180");
+        } else {
+          budgetContent.style.maxHeight = budgetContent.scrollHeight + "px";
+          budgetContent.style.opacity = "1";
+          budgetArrow?.classList.add("rotate-180");
+        }
+      });
+    }
+
+    // Enter key on inputs
+    document.getElementById("nome-input")?.addEventListener("keydown", (e) => { if ((e as KeyboardEvent).key === "Enter") btnNext.click(); });
+    document.getElementById("budget-input")?.addEventListener("keydown", (e) => { if ((e as KeyboardEvent).key === "Enter") btnNext.click(); });
+    document.getElementById("email-input")?.addEventListener("keydown", (e) => { if ((e as KeyboardEvent).key === "Enter") btnNext.click(); });
+
+    // Back button
+    btnBack.addEventListener("click", () => { if (currentStep > 1 && !isAnimating) goToStep(currentStep - 1, "backward"); });
+
+    // Next button
+    btnNext.addEventListener("click", () => {
+      if (isAnimating) return;
+
+      if (currentStep === 1) {
+        // Validate name
+        const nameInput = document.getElementById("nome-input") as HTMLInputElement;
+        const name = nameInput.value.trim();
+        if (!name) { shake(nameInput); return; }
+        userName = name;
+        formData.nome = name;
+        updateUserName();
+
+        // Show greeting — cinematic sequence
+        goToStep("greeting" as any, "forward");
+
+        // Hide nav + progress + social during greeting
+        gsap.to(formNav, { opacity: 0, duration: 0.3 });
+        gsap.to(".form-progress", { opacity: 0, duration: 0.3 });
+        gsap.to(".social-proof", { opacity: 0, duration: 0.3 });
+
+        // Fill greeting names
+        document.querySelectorAll(".greeting-name").forEach((el) => { el.textContent = userName; });
+
+        // Cinematic sequence — simple fade + slide up
+        const greetTl = gsap.timeline();
+        let t = 0.3;
+
+        // Slide 1
+        greetTl.fromTo(".greeting-slide-1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, t);
+        t += 0.7 + 1.5;
+        greetTl.to(".greeting-slide-1", { opacity: 0, duration: 0.4, ease: "power2.in" }, t);
+        t += 0.5;
+
+        // Slide 2: "Noi siamo BizStudio..." then "...e se hai un sogno..."
+        greetTl.fromTo(".greeting-slide-2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, t);
+        t += 0.7 + 1.2;
+        greetTl.fromTo(".greeting-2b", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t);
+        t += 0.6 + 2.2;
+        greetTl.to(".greeting-slide-2", { opacity: 0, duration: 0.4, ease: "power2.in" }, t);
+        t += 0.5;
+
+        // Slide 3
+        greetTl.fromTo(".greeting-slide-3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, t);
+        t += 0.7 + 1.0;
+        greetTl.to(".greeting-slide-3", { opacity: 0, duration: 0.4, ease: "power2.in" }, t);
+        t += 0.5;
+
+        // Slide 4
+        greetTl.fromTo(".greeting-slide-4", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, t);
+        t += 0.7 + 1.2;
+
+        // Slide 4: elegant transition — scale up + blur out → step 2
+        greetTl.to(".greeting-finale", { scale: 1.08, filter: "blur(12px)", opacity: 0, duration: 0.7, ease: "power2.in" }, t);
+        greetTl.call(() => {
+          goToStep(2, "forward");
+          setTimeout(() => {
+            const step2Cards = document.querySelectorAll('[data-step="2"] .option-card');
+            if (step2Cards.length) {
+              gsap.fromTo(step2Cards, { opacity: 0, y: 20, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.07, ease: "back.out(1.2)" });
+            }
+            gsap.to(formNav, { opacity: 1, duration: 0.4 });
+            gsap.to(".form-progress", { opacity: 1, duration: 0.4 });
+            gsap.to(".social-proof", { opacity: 1, duration: 0.4 });
+          }, 150);
+        }, [], t + 0.4);
+
+        return;
+      }
+
+      if (currentStep === 2) {
+        const sel = document.querySelector('[data-step="2"] .option-card.selected');
+        if (!sel) { gsap.to('[data-step="2"] .options-grid', { x: -5, duration: 0.05, yoyo: true, repeat: 5, ease: "power2.inOut" }); return; }
+        const followup = document.querySelector('[data-step="2"] .followup') as HTMLElement;
+        const chipSel = followup?.querySelector(".chip-active");
+        if (!chipSel) {
+          const chipsWrap = followup?.querySelector(".flex.flex-wrap") as HTMLElement;
+          if (chipsWrap) gsap.to(chipsWrap, { x: -5, duration: 0.05, yoyo: true, repeat: 5, ease: "power2.inOut" });
+          return;
+        }
+        const linkInput = document.getElementById("sito-attuale") as HTMLInputElement;
+        if (linkInput?.value) formData.sitoLink = linkInput.value.trim();
+        if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+        goToStep(3, "forward");
+        return;
+      }
+
+      if (currentStep === 3) {
+        // Store azienda data
+        formData.azienda = (document.getElementById("azienda-input") as HTMLInputElement)?.value.trim() || "";
+        formData.settore = (document.getElementById("settore-input") as HTMLInputElement)?.value.trim() || "";
+        // Check maturità selection
+        const matSel = document.querySelector('[data-step="3"] .option-card.selected');
+        if (matSel) formData.maturita = (matSel as HTMLElement).dataset.value || "";
+        goToStep(4, "forward");
+        startBudgetPlaceholder();
+        return;
+      }
+
+      if (currentStep === 4) {
+        const budgetInput = document.getElementById("budget-input") as HTMLInputElement;
+        formData.budget = budgetInput.value.trim() || "non specificato";
+        if (typeTimeout) clearTimeout(typeTimeout);
+        goToStep(5, "forward");
+        return;
+      }
+
+      if (currentStep === 5) {
+        submitForm();
+      }
+    });
+
+    // Submit
+    async function submitForm() {
+      const cognomeInput = document.getElementById("cognome-input") as HTMLInputElement;
+      const emailInput = document.getElementById("email-input") as HTMLInputElement;
+      const telefonoInput = document.getElementById("telefono-input") as HTMLInputElement;
+      const privacyCheck = document.getElementById("privacy-check") as HTMLInputElement;
+
+      const cognome = cognomeInput.value.trim();
+      const email = emailInput.value.trim();
+      const telefono = telefonoInput.value.trim();
+
+      if (!cognome) { shake(cognomeInput); return; }
+      if (!email || !email.includes("@") || !email.includes(".")) { shake(emailInput); return; }
+      if (!telefono) { shake(telefonoInput); return; }
+      if (!privacyCheck.checked) { shake(privacyCheck.closest("label") as HTMLElement); return; }
+
+      formData.cognome = cognome;
+      formData.email = email;
+      formData.telefono = telefono;
+
+      setBtnText("Invio in corso...");
+      btnArrow.classList.add("hidden");
+      btnSpinner.classList.remove("hidden");
+      (btnNext as HTMLButtonElement).disabled = true;
+
+      try {
+        await new Promise((r) => setTimeout(r, 1500));
+        // TODO: await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
+        updateUserName();
+        goToStep("success" as any, "forward");
+      } catch {
+        setBtnText("Invia la richiesta");
+        btnArrow.classList.remove("hidden");
+        btnSpinner.classList.add("hidden");
+        (btnNext as HTMLButtonElement).disabled = false;
+      }
+    }
+
+    function shake(el: HTMLElement | null) {
+      if (!el) return;
+      gsap.to(el, { x: -5, duration: 0.05, yoyo: true, repeat: 5, ease: "power2.inOut" });
+      if (el.tagName === "INPUT") (el as HTMLElement).focus();
+      else { const input = el.querySelector("input"); if (input) (input as HTMLElement).focus(); }
+    }
+  });
+</script>
+
+<style>
+  .option-card { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: 1.25rem 1rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); cursor: pointer; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); outline: none; }
+  @media (min-width: 640px) { .option-card { padding: 1.5rem 1rem; } }
+  .option-card:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.07); transform: translateY(-2px); }
+  .option-card:focus-visible { outline: 2px solid rgba(165,27,128,0.5); outline-offset: 2px; }
+  .option-card.selected { border-color: rgba(165,27,128,0.5); background: rgba(165,27,128,0.1); box-shadow: 0 0 24px rgba(165,27,128,0.1); }
+  .option-card.selected .option-icon-wrap { background: linear-gradient(135deg, rgba(27,64,136,0.3), rgba(165,27,128,0.3), rgba(218,87,19,0.3)); color: white; }
+
+  .option-card-compact { padding: 1rem 0.875rem; gap: 0.25rem; }
+  .option-card-compact .option-title { font-size: 0.8rem; }
+  .option-card-compact .option-desc { font-size: 0.65rem; }
+
+  .option-icon-wrap { width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; border-radius: 0.75rem; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); transition: all 0.3s ease; }
+  .option-title { font-size: 1rem; font-weight: 600; color: white; line-height: 125%; }
+  .option-desc { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+  .form-input { width: 100%; padding: 0.875rem 1.125rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 0.875rem; color: white; font-size: 0.95rem; font-family: inherit; outline: none; transition: all 0.3s ease; }
+  .form-input:hover { border-color: rgba(255,255,255,0.25); }
+  .form-input:focus { border-color: rgba(165,27,128,0.4); background: rgba(255,255,255,0.06); box-shadow: 0 0 20px rgba(165,27,128,0.08), 0 0 0 3px rgba(165,27,128,0.05); }
+  .form-input::placeholder { color: rgba(255,255,255,0.3); }
+
+  .chip { padding: 0.5rem 1rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
+  .chip:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.07); color: white; }
+  .chip-active { border-color: rgba(165,27,128,0.5); background: rgba(165,27,128,0.1); color: white; }
+
+
+  .word-warm-gradient {
+    background: linear-gradient(90deg, #DA5713, #A51B80 60%, #DA5713);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: warm-shift 3s ease-in-out infinite;
+  }
+  @keyframes warm-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .greeting-stage { position: relative; }
+  .greeting-slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 1rem; }
+
+  .btn-next:disabled, .btn-next[disabled] { opacity: 0.35; pointer-events: none; cursor: not-allowed; }
+  .btn-next { transition: opacity 0.3s ease, box-shadow 0.3s ease; }
+
+  @media (prefers-reduced-motion: reduce) { .option-card, .chip { transition-duration: 0.01ms !important; } }
+</style>
