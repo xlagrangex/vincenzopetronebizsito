@@ -1,25 +1,47 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const T = "0.5s cubic-bezier(0.4,0,0,1)";
+const EXPO = "cubic-bezier(0.16,1,0.3,1)";
+const EASE_IN = "cubic-bezier(0.4,0,1,1)";
 
 export default function StickyContactIsland() {
-  const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
-  const ticking = useRef(false);
+  const [open, setOpen] = useState(false);
+  const raf = useRef(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  const handleEnter = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const handleLeave = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 200);
+  };
 
   useEffect(() => {
     const onScroll = () => {
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
+      if (!raf.current) {
+        requestAnimationFrame(() => {
           setVisible(window.scrollY > 300);
-          ticking.current = false;
+          raf.current = false;
         });
-        ticking.current = true;
+        raf.current = true;
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /* --- staggered transitions for organic motion --- */
+
+  // Text: on open → fade first, then collapse. On close → expand first, then fade in.
+  const textT = open
+    ? `opacity 0.3s ease, max-width 0.8s ${EXPO} 0.1s, padding 0.8s ${EXPO} 0.1s`
+    : `max-width 0.35s ${EASE_IN}, padding 0.35s ${EASE_IN}, opacity 0.25s ease 0.2s`;
+
+  // Labels: on open → expand with delay, fade in later. On close → fade first, then collapse.
+  const labelT = open
+    ? `max-width 0.85s ${EXPO} 0.2s, padding-left 0.85s ${EXPO} 0.2s, opacity 0.5s ease 0.35s`
+    : `opacity 0.12s ease, max-width 0.3s ${EASE_IN} 0.08s, padding-left 0.3s ${EASE_IN} 0.08s`;
 
   return (
     <div
@@ -28,54 +50,55 @@ export default function StickyContactIsland() {
         bottom: 24,
         left: "50%",
         zIndex: 90,
-        transform: `translate(-50%, ${visible ? "0px" : "40px"})`,
+        transform: `translateX(-50%) translateY(${visible ? 0 : 20}px) scale(${visible ? 1 : 0.92})`,
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
-        transition: `transform 1.2s cubic-bezier(0.4,0,0,1), opacity 1.2s cubic-bezier(0.4,0,0,1)`,
+        transition: visible
+          ? `transform 0.7s ${EXPO}, opacity 0.5s ${EXPO}`
+          : `transform 0.35s ${EASE_IN}, opacity 0.2s ease`,
       }}
     >
-      {/* Fixed-size pill */}
+      {/* Invisible hover zone — prevents flicker at pill edges */}
       <div
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          width: 320,
-          height: 56,
-          padding: 6,
-          gap: 6,
-          borderRadius: 9999,
-          border: "1px solid rgba(255,255,255,0.4)",
-          background: "rgba(255,255,255,0.5)",
-          backdropFilter: "blur(28px) saturate(1.6)",
-          WebkitBackdropFilter: "blur(28px) saturate(1.6)",
-          boxShadow: "0 4px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.04)",
-          cursor: "pointer",
-          overflow: "hidden",
-        }}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+        style={{ padding: 8 }}
       >
-        {/* Text — collapses to 0 width on open */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: 5,
+            gap: 5,
+            borderRadius: 9999,
+            border: "1px solid rgba(255,255,255,0.35)",
+            background: "rgba(255,255,255,0.45)",
+            backdropFilter: "blur(24px) saturate(1.5)",
+            WebkitBackdropFilter: "blur(24px) saturate(1.5)",
+            boxShadow:
+              "0 8px 32px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.5)",
+            cursor: "pointer",
+          }}
+        >
+        {/* CTA text — fades then collapses on hover */}
         <div
           style={{
             overflow: "hidden",
             whiteSpace: "nowrap",
             flexShrink: 0,
-            maxWidth: open ? 0 : 180,
+            maxWidth: open ? 0 : 95,
             opacity: open ? 0 : 1,
             paddingLeft: open ? 0 : 10,
-            transition: `max-width ${T}, opacity ${T}, padding ${T}`,
+            paddingRight: open ? 0 : 4,
+            transition: textT,
           }}
         >
-          <div style={{ fontSize: "0.93rem", fontWeight: 600, color: "#000", lineHeight: 1.2 }}>
+          <span style={{ fontSize: "0.88rem", fontWeight: 600, color: "#1a1a1a" }}>
             Speak to me
-          </div>
-          <div style={{ fontSize: "0.76rem", color: "rgba(0,0,0,0.4)", lineHeight: 1.2, marginTop: 2 }}>
-            Email or book a call
-          </div>
+          </span>
         </div>
 
-        {/* WhatsApp — circle that expands to pill */}
+        {/* WhatsApp */}
         <a
           href="https://wa.me/393319942136"
           target="_blank"
@@ -84,18 +107,14 @@ export default function StickyContactIsland() {
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            flexShrink: 0,
             height: 44,
             minWidth: 44,
+            padding: "0 12px",
             borderRadius: 9999,
             backgroundColor: "#25D366",
             color: "white",
-            paddingLeft: open ? 14 : 11,
-            paddingRight: open ? 18 : 11,
             textDecoration: "none",
-            transition: `padding ${T}`,
+            overflow: "hidden",
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
@@ -107,16 +126,17 @@ export default function StickyContactIsland() {
               fontWeight: 600,
               whiteSpace: "nowrap",
               overflow: "hidden",
-              maxWidth: open ? 80 : 0,
+              maxWidth: open ? 70 : 0,
               opacity: open ? 1 : 0,
-              transition: `max-width ${T}, opacity ${T}`,
+              paddingLeft: open ? 8 : 0,
+              transition: labelT,
             }}
           >
             WhatsApp
           </span>
         </a>
 
-        {/* Book a call — circle that expands to pill */}
+        {/* Book a call */}
         <a
           href="https://calendly.com/bizstudio-it/30min"
           target="_blank"
@@ -125,19 +145,15 @@ export default function StickyContactIsland() {
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            flexShrink: 0,
             height: 44,
             minWidth: 44,
+            padding: "0 12px",
             borderRadius: 9999,
             border: "1px solid rgba(0,0,0,0.08)",
             backgroundColor: "rgba(255,255,255,0.85)",
             color: "#000",
-            paddingLeft: open ? 14 : 11,
-            paddingRight: open ? 18 : 11,
             textDecoration: "none",
-            transition: `padding ${T}, border-color 0.2s ease, box-shadow 0.2s ease`,
+            overflow: "hidden",
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
@@ -153,14 +169,16 @@ export default function StickyContactIsland() {
               fontWeight: 600,
               whiteSpace: "nowrap",
               overflow: "hidden",
-              maxWidth: open ? 90 : 0,
+              maxWidth: open ? 82 : 0,
               opacity: open ? 1 : 0,
-              transition: `max-width ${T}, opacity ${T}`,
+              paddingLeft: open ? 8 : 0,
+              transition: labelT,
             }}
           >
             Book a call
           </span>
         </a>
+        </div>
       </div>
     </div>
   );
