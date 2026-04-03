@@ -22,7 +22,7 @@ const GLASS =
   "border border-white/40 bg-white/50 shadow-[0_4px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.04)] backdrop-blur-[28px] backdrop-saturate-[1.6]";
 
 const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
-const EASE_SMOOTH = "cubic-bezier(0.4, 0, 0.2, 1)";
+const EASE_SMOOTH = "cubic-bezier(0.4, 0, 0.1, 1)";
 
 /* ────────────────────────────────────────────
    Menu Panel (portal → body)
@@ -162,8 +162,8 @@ export default function NavbarGlass() {
               opacity: collapsed ? 0 : 1,
               pointerEvents: collapsed ? "none" : "auto",
               transition: collapsed
-                ? `opacity 0.25s ease, max-width 0.6s ${EASE_SMOOTH}`
-                : `opacity 0.4s ease 0.12s, max-width 0.65s ${EASE_SMOOTH}`,
+                ? `opacity 0.35s ease-out, max-width 0.85s ${EASE_SMOOTH} 0.05s`
+                : `max-width 0.9s ${EASE_SMOOTH}, opacity 0.5s ease 0.25s`,
             }}
           >
             <div className="flex items-center gap-1 px-1">
@@ -191,27 +191,41 @@ export default function NavbarGlass() {
             </div>
           </div>
 
-          {/* Menu button — 2 lines ↔ X */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className={`ml-1 flex-shrink-0 flex flex-col items-center justify-center gap-[5px] cursor-pointer h-10 w-10 rounded-full transition-colors duration-200 hover:bg-black/5 ${collapsed ? "lg:flex" : "lg:hidden"}`}
-            aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+          {/* Menu button — appears AFTER Contact has faded out */}
+          <div
+            className={`overflow-hidden flex items-center ${
+              collapsed
+                ? "ml-1 lg:max-w-[40px]"
+                : "ml-1 lg:max-w-0 lg:opacity-0 lg:pointer-events-none lg:ml-0"
+            }`}
+            style={{
+              transition: collapsed
+                ? `max-width 0.4s ${EASE_SMOOTH} 0.35s, opacity 0.35s ease 0.4s, margin 0.4s ${EASE_SMOOTH} 0.35s`
+                : `max-width 0.3s ${EASE_SMOOTH}, opacity 0.15s ease, margin 0.3s ${EASE_SMOOTH}`,
+            }}
           >
-            <span
-              className="block h-[1.5px] w-[18px] rounded-full bg-black/70 origin-center"
-              style={{
-                transform: menuOpen ? "rotate(45deg) translateY(3.25px)" : "none",
-                transition: `transform 0.4s ${EASE}`,
-              }}
-            />
-            <span
-              className="block h-[1.5px] w-[18px] rounded-full bg-black/70 origin-center"
-              style={{
-                transform: menuOpen ? "rotate(-45deg) translateY(-3.25px)" : "none",
-                transition: `transform 0.4s ${EASE}`,
-              }}
-            />
-          </button>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex-shrink-0 flex flex-col items-center justify-center gap-[5px] cursor-pointer h-10 w-10 rounded-full hover:bg-black/5"
+              style={{ transition: "background-color 0.2s ease" }}
+              aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+            >
+              <span
+                className="block h-[1.5px] w-[18px] rounded-full bg-black/70 origin-center"
+                style={{
+                  transform: menuOpen ? "rotate(45deg) translateY(3.25px)" : "none",
+                  transition: `transform 0.4s ${EASE}`,
+                }}
+              />
+              <span
+                className="block h-[1.5px] w-[18px] rounded-full bg-black/70 origin-center"
+                style={{
+                  transform: menuOpen ? "rotate(-45deg) translateY(-3.25px)" : "none",
+                  transition: `transform 0.4s ${EASE}`,
+                }}
+              />
+            </button>
+          </div>
         </div>
       </nav>
 
